@@ -21,7 +21,7 @@ enum SideMenuRowType: Int, CaseIterable {
         case .share:
             return "Share"
         case .rate:
-            return "Rate"
+            return "Activity"
         case .privacy:
             return "Privacy"
         case .cancelSubscription:

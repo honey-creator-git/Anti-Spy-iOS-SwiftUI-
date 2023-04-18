@@ -24,6 +24,13 @@
 		E2C5E10529E888FC00545261 /* RedirectingWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5E10429E888FC00545261 /* RedirectingWebView.swift */; };
 		E2DC5EDD29ECDCE000A93D90 /* StopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC5EDC29ECDCE000A93D90 /* StopView.swift */; };
 		E2DC5EDF29ECE74F00A93D90 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC5EDE29ECE74F00A93D90 /* HomePage.swift */; };
+		E2FD6AD629EEC3EF006FAB8F /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FD6AD529EEC3EF006FAB8F /* TabView.swift */; };
+		E2FD6AD829EEC429006FAB8F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FD6AD729EEC429006FAB8F /* SettingsView.swift */; };
+		E2FD6ADC29EEC560006FAB8F /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FD6ADB29EEC560006FAB8F /* ShareView.swift */; };
+		E2FD6ADE29EEC607006FAB8F /* RateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FD6ADD29EEC607006FAB8F /* RateView.swift */; };
+		E2FD6AE029EEC6D7006FAB8F /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FD6ADF29EEC6D7006FAB8F /* PrivacyPolicyView.swift */; };
+		E2FD6AE229EEC7B0006FAB8F /* CancelSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FD6AE129EEC7B0006FAB8F /* CancelSubscriptionView.swift */; };
+		E2FD6AE629EED557006FAB8F /* SideMenuContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FD6AE529EED557006FAB8F /* SideMenuContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +71,13 @@
 		E2C5E10429E888FC00545261 /* RedirectingWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectingWebView.swift; sourceTree = "<group>"; };
 		E2DC5EDC29ECDCE000A93D90 /* StopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopView.swift; sourceTree = "<group>"; };
 		E2DC5EDE29ECE74F00A93D90 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		E2FD6AD529EEC3EF006FAB8F /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		E2FD6AD729EEC429006FAB8F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E2FD6ADB29EEC560006FAB8F /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
+		E2FD6ADD29EEC607006FAB8F /* RateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateView.swift; sourceTree = "<group>"; };
+		E2FD6ADF29EEC6D7006FAB8F /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		E2FD6AE129EEC7B0006FAB8F /* CancelSubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelSubscriptionView.swift; sourceTree = "<group>"; };
+		E2FD6AE529EED557006FAB8F /* SideMenuContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +182,14 @@
 				E2A886CB29EA4C8500F04FAD /* StartView.swift */,
 				E2DC5EDC29ECDCE000A93D90 /* StopView.swift */,
 				E2DC5EDE29ECE74F00A93D90 /* HomePage.swift */,
+				E2FD6AD729EEC429006FAB8F /* SettingsView.swift */,
+				E2FD6ADB29EEC560006FAB8F /* ShareView.swift */,
+				E2FD6ADD29EEC607006FAB8F /* RateView.swift */,
+				E2FD6ADF29EEC6D7006FAB8F /* PrivacyPolicyView.swift */,
+				E2FD6AE129EEC7B0006FAB8F /* CancelSubscriptionView.swift */,
 				E2B4E44029EE3A67004D83A0 /* SideMenuView.swift */,
+				E2FD6AE529EED557006FAB8F /* SideMenuContainerView.swift */,
+				E2FD6AD529EEC3EF006FAB8F /* TabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -308,13 +329,20 @@
 				E24D64A329E8FA2F00044D40 /* PaymentSuccessView.swift in Sources */,
 				E2DC5EDD29ECDCE000A93D90 /* StopView.swift in Sources */,
 				E215999029E6BECC000FA331 /* ContentView.swift in Sources */,
+				E2FD6AE629EED557006FAB8F /* SideMenuContainerView.swift in Sources */,
 				E2B4E44129EE3A67004D83A0 /* SideMenuView.swift in Sources */,
 				E2A886CC29EA4C8500F04FAD /* StartView.swift in Sources */,
 				E215998E29E6BECC000FA331 /* AntiSpyApp.swift in Sources */,
 				E202D66C29ED897D00CCF082 /* Activity.swift in Sources */,
 				E2B4E43F29EE390D004D83A0 /* SideMenu.swift in Sources */,
 				E238E77829E707FC00A2589F /* SubscriptionView.swift in Sources */,
+				E2FD6ADC29EEC560006FAB8F /* ShareView.swift in Sources */,
+				E2FD6AE029EEC6D7006FAB8F /* PrivacyPolicyView.swift in Sources */,
+				E2FD6ADE29EEC607006FAB8F /* RateView.swift in Sources */,
+				E2FD6AD629EEC3EF006FAB8F /* TabView.swift in Sources */,
+				E2FD6AE229EEC7B0006FAB8F /* CancelSubscriptionView.swift in Sources */,
 				E2DC5EDF29ECE74F00A93D90 /* HomePage.swift in Sources */,
+				E2FD6AD829EEC429006FAB8F /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

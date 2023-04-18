@@ -11,12 +11,12 @@ import SwiftUI
 struct HomePage: View {
     @Binding var presentSideMenu: Bool
     var activities: [Activity] = [
-        Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "WhatsApp", iconName: "WhatsAppLogoImage", serviceName: "CameraIconImage", period: "0:00:30"),
-        Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Facebook", iconName: "FacebookLogoImage", serviceName: "LocationIconImage", period: "0:00:30"),
-        Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Call", iconName: "CallLogoImage", serviceName: "MicroPhoneIconImage", period: "0:00:30"),
-        Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Camera", iconName: "CameraHomeLogoImage", serviceName: "CameraIconImage", period: "0:00:30"),
-        Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "WhatsApp", iconName: "WhatsAppLogoImage", serviceName: "CameraIconImage", period: "0:00:30"),
-        Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Twitter", iconName: "TwitterLogoImage", serviceName: "MicroPhoneIconImage", period: "0:00:30")
+//        Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "WhatsApp", iconName: "WhatsAppLogoImage", serviceName: "CameraIconImage", period: "0:00:30"),
+//        Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Facebook", iconName: "FacebookLogoImage", serviceName: "LocationIconImage", period: "0:00:30"),
+//        Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Call", iconName: "CallLogoImage", serviceName: "MicroPhoneIconImage", period: "0:00:30"),
+//        Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Camera", iconName: "CameraHomeLogoImage", serviceName: "CameraIconImage", period: "0:00:30"),
+//        Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "WhatsApp", iconName: "WhatsAppLogoImage", serviceName: "CameraIconImage", period: "0:00:30"),
+//        Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Twitter", iconName: "TwitterLogoImage", serviceName: "MicroPhoneIconImage", period: "0:00:30")
     ]
     var body: some View {
         GeometryReader { geometry in
@@ -54,42 +54,77 @@ struct HomePage: View {
                         
                         GeometryReader { geo in
                             ZStack {
-                                ScrollView() {
-                                    ForEach(activities, id: \.self) {activity in
-                                        HStack() {
-                                            VStack() {
-                                                Text(activity.startDate)
-                                                    .font(.system(size: 14))
-                                                    .foregroundColor(Color("GrayColor"))
-                                                Text(activity.startTime)
-                                                    .font(.system(size: 14))
+                                if(activities.count > 0) {
+                                    ScrollView() {
+                                        ForEach(activities, id: \.self) {activity in
+                                            HStack() {
+                                                VStack() {
+                                                    Text(activity.startDate)
+                                                        .font(.system(size: 14))
+                                                        .foregroundColor(Color("GrayColor"))
+                                                    Text(activity.startTime)
+                                                        .font(.system(size: 14))
+                                                        .foregroundColor(Color("GrayColor"))
+                                                }
+                                                Spacer()
+                                                Image(activity.iconName)
+                                                Spacer()
+                                                Text(activity.name)
+                                                    .font(.system(size: 16))
+                                                    .foregroundColor(.white)
+                                                Spacer()
+                                                Image(activity.serviceName)
+                                                Spacer()
+                                                Text(activity.period)
+                                                    .font(.system(size: 12))
                                                     .foregroundColor(Color("GrayColor"))
                                             }
-                                            Spacer()
-                                            Image(activity.iconName)
-                                            Spacer()
-                                            Text(activity.name)
-                                                .font(.system(size: 16))
-                                                .foregroundColor(.white)
-                                            Spacer()
-                                            Image(activity.serviceName)
-                                            Spacer()
-                                            Text(activity.period)
-                                                .font(.system(size: 12))
-                                                .foregroundColor(Color("GrayColor"))
-                                        }
-                                        .frame(maxWidth: geo.size.width, alignment: .leading)
-                                        .padding(.horizontal, 20)
-
-                                        Divider()
-                                            .frame(height: 2)
-                                            .overlay(Color("DividerBackgroundColor"))
+                                            .frame(maxWidth: geo.size.width, alignment: .leading)
                                             .padding(.horizontal, 20)
-                                            .padding(.vertical, 10)
+
+                                            Divider()
+                                                .frame(height: 2)
+                                                .overlay(Color("DividerBackgroundColor"))
+                                                .padding(.horizontal, 20)
+                                                .padding(.vertical, 10)
+                                        }
                                     }
+                                    .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height / 2 + 150, alignment: .top)
+                                    .padding(.top, geo.safeAreaInsets.top - 30)
+                                } else {
+                                    VStack(spacing: 15.0) {
+                                        Image("StartActivityLogoImage")
+                                        
+                                        Text("No camera activity yet.")
+                                            .font(.system(size: 18))
+                                            .foregroundColor(Color("GrayColor"))
+                                        
+                                        Text("No microphone activity yet.")
+                                            .font(.system(size: 18))
+                                            .foregroundColor(Color("GrayColor"))
+                                        
+                                        Text("No location activity yet.")
+                                            .font(.system(size: 18))
+                                            .foregroundColor(Color("GrayColor"))
+                                        
+                                        Button(action: {
+                                            
+                                        }) {
+                                            HStack() {
+                                                Text("Start Activity")
+                                                    .font(.system(size: 16))
+                                                    .foregroundColor(.white)
+                                                    .padding(.horizontal, 25)
+                                                    .padding(.vertical, 15)
+                                                    
+                                            }
+                                            .background(LinearGradient(gradient: Gradient(colors: [Color("StartActivityButtonBackgroundColor"), Color("StartActivityButtonBackgroundColor")]), startPoint: .top, endPoint: .bottom))
+                                            .cornerRadius(50)
+                                        }
+                                    }
+                                    .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height / 2 + 130, alignment: .top)
+                                    .padding(.top, geo.safeAreaInsets.top - 50)
                                 }
-                                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height / 2 + 150, alignment: .top)
-                                .padding(.top, geo.safeAreaInsets.top - 30)
                                 
                                 HStack() {
                                     HStack(spacing: 70.0) {
@@ -119,7 +154,7 @@ struct HomePage: View {
                                 )
                                 .cornerRadius(50)
                                 .padding()
-                                .padding(.top, geo.size.height / 2 + 70)
+                                .padding(.top, geo.size.height / 2 + 80)
                             }
                         }
                     }
