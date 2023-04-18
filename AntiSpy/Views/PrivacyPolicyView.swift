@@ -9,17 +9,37 @@ import Foundation
 import SwiftUI
 
 struct PrivacyPolicyView: View {
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @Binding var presentSideMenu: Bool
     
     var body: some View {
-        VStack() {
-            Button(action: {
-                self.presentSideMenu.toggle()
-            }) {
-                Text("Privacy Policy")
-                    .font(.system(size: 24))
-                    .foregroundColor(.black)
+        GeometryReader { geometry in
+            ZStack {
+                HStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image("BackButtonIconImage")
+                    }
+                }
+                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height, alignment: .topLeading)
+                .padding(.horizontal, 20)
+                .zIndex(1)
+             
+                VStack() {
+                    Button(action: {
+                        self.presentSideMenu.toggle()
+                    }) {
+                        Text("Privacy Policy View")
+                            .font(.system(size: 24))
+                            .foregroundColor(.black)
+                    }
+                }
             }
+            .frame(alignment: .top)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

@@ -9,46 +9,60 @@ import Foundation
 import SwiftUI
 
 struct CancelSubscriptionView: View {
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @Binding var presentSideMenu: Bool
     
     var body: some View {
-        ZStack() {
-            VStack() {
-                ZStack() {
-                    VStack(spacing: 10.0) {
-                        Text("Cancel Subscription")
-                            .font(.system(size: 24))
-                            .foregroundColor(.white)
-                        
-                        Text("You want to cancel your subscription ?")
-                            .font(.system(size: 14))
-                            .foregroundColor(.white)
-                        
-                        Button(action: {
-                            
-                        }) {
-                            HStack() {
-                                Text("Yes")
-                                    .font(.system(size: 16))
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 30)
-                                    .padding(.vertical, 15)
-                            }
-                            .background(
-                                LinearGradient(gradient: Gradient(colors: [Color("GrayColor"), Color("GrayColor")]), startPoint: .top, endPoint: .bottom)
-                            )
-                            .cornerRadius(50)
-                            .padding(.top, 10)
-                        }
+        GeometryReader { geometry in
+            ZStack() {
+                HStack() {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image("BackButtonIconImage")
                     }
-                    .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height - 100, alignment: .center)
                 }
+                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height, alignment: .topLeading)
+                .padding(.horizontal, 20)
+                .zIndex(1)
+                
+                VStack() {
+                    ZStack() {
+                        VStack(spacing: 10.0) {
+                            Text("Cancel Subscription")
+                                .font(.system(size: 24))
+                                .foregroundColor(.white)
+                            
+                            Text("You want to cancel your subscription ?")
+                                .font(.system(size: 14))
+                                .foregroundColor(.white)
+                            
+                            Button(action: {
+                                
+                            }) {
+                                HStack() {
+                                    Text("Yes")
+                                        .font(.system(size: 16))
+                                        .foregroundColor(.white)
+                                        .padding(.horizontal, 30)
+                                        .padding(.vertical, 15)
+                                }
+                                .background(
+                                    LinearGradient(gradient: Gradient(colors: [Color("GrayColor"), Color("GrayColor")]), startPoint: .top, endPoint: .bottom)
+                                )
+                                .cornerRadius(50)
+                                .padding(.top, 10)
+                            }
+                        }
+                        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height - 100, alignment: .center)
+                    }
+                }
+                .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
             }
-            .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
+            .background(
+                LinearGradient(gradient: Gradient(colors: [Color("StartPageBackgroundColor"), Color("StartPageBackgroundColor")]), startPoint: .top, endPoint: .bottom)
+            )
         }
-        .background(
-            LinearGradient(gradient: Gradient(colors: [Color("StartPageBackgroundColor"), Color("StartPageBackgroundColor")]), startPoint: .top, endPoint: .bottom)
-        )
     }
 }
 

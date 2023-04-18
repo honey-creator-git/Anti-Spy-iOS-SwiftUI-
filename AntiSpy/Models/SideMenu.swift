@@ -8,7 +8,7 @@
 import Foundation
 
 enum SideMenuRowType: Int, CaseIterable {
-    case settings = 0
+    case settings = 1
     case share
     case rate
     case privacy
