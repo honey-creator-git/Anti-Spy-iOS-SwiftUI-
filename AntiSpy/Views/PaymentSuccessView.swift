@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct PaymentSuccessView: View {
+    @State var startPageTab: Int? = nil
     var body: some View {
         ZStack {
             VStack() {
@@ -30,21 +31,23 @@ struct PaymentSuccessView: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    
-                }) {
-                    HStack() {
-                        VStack() {
-                            Text("Continue")
-                                .font(.system(size: 16))
-                                .foregroundColor(.white)
+                NavigationLink(destination: StartView(), tag: 2, selection: $startPageTab) {
+                    Button(action: {
+                        self.startPageTab = 2
+                    }) {
+                        HStack() {
+                            VStack() {
+                                Text("Continue")
+                                    .font(.system(size: 16))
+                                    .foregroundColor(.white)
+                            }
+                            .padding(.vertical, 15)
+                            .frame(maxWidth: UIScreen.main.bounds.width - 50)
+                            .background(Color("SaveBackgroundColor"))
+                            .cornerRadius(50)
                         }
-                        .padding(.vertical, 15)
-                        .frame(maxWidth: UIScreen.main.bounds.width - 50)
-                        .background(Color("SaveBackgroundColor"))
-                        .cornerRadius(50)
+                        .padding(.top, 30)
                     }
-                    .padding(.top, 30)
                 }
             }
             .padding(.vertical, 20)

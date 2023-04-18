@@ -57,6 +57,7 @@ struct SideMenuView: View {
     }
     
     func RowView(isSelected: Bool, imageName: String, title: String, hideDivider: Bool = false, action: @escaping (()->())) -> some View {
+        
         Button(action: {
             action()
         }) {

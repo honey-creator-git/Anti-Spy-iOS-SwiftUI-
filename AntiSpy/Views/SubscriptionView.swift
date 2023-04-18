@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct SubscriptionView: View {
+    @State var paymentSucessTab: Int? = nil
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
@@ -129,21 +130,23 @@ struct SubscriptionView: View {
                                 .padding(.top, 10)
                                 .frame(maxWidth: UIScreen.main.bounds.width - 80, alignment: .center)
 
-                            Button(action: {
-                                
-                            }) {
-                                HStack() {
-                                    VStack() {
-                                        Text("Continue")
-                                            .font(.system(size: 16))
-                                            .foregroundColor(.white)
+                            NavigationLink(destination: PaymentSuccessView().navigationBarBackButtonHidden(true), tag: 1, selection: $paymentSucessTab) {
+                                Button(action: {
+                                    self.paymentSucessTab = 1
+                                }) {
+                                    HStack() {
+                                        VStack() {
+                                            Text("Continue")
+                                                .font(.system(size: 16))
+                                                .foregroundColor(.white)
+                                        }
+                                        .padding(.vertical, 15)
+                                        .frame(maxWidth: UIScreen.main.bounds.width - 50)
+                                        .background(Color("SaveBackgroundColor"))
+                                        .cornerRadius(50)
                                     }
-                                    .padding(.vertical, 15)
-                                    .frame(maxWidth: UIScreen.main.bounds.width - 50)
-                                    .background(Color("SaveBackgroundColor"))
-                                    .cornerRadius(50)
+                                    .padding(.top, 30)
                                 }
-                                .padding(.top, 30)
                             }
                         }
                         .padding(.horizontal, 20)
