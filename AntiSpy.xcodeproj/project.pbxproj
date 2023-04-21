@@ -22,6 +22,9 @@
 		E2B4E43F29EE390D004D83A0 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E43E29EE390D004D83A0 /* SideMenu.swift */; };
 		E2B4E44129EE3A67004D83A0 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E44029EE3A67004D83A0 /* SideMenuView.swift */; };
 		E2C5E10529E888FC00545261 /* RedirectingWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5E10429E888FC00545261 /* RedirectingWebView.swift */; };
+		E2C7BFC029F2611100ACB017 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C7BFBF29F2611100ACB017 /* StoreKit.framework */; };
+		E2D006D329F034230089571F /* SubscriptionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D006D229F034220089571F /* SubscriptionTestView.swift */; };
+		E2D006D529F038660089571F /* SubscriptioinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D006D429F038660089571F /* SubscriptioinManager.swift */; };
 		E2DC5EDD29ECDCE000A93D90 /* StopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC5EDC29ECDCE000A93D90 /* StopView.swift */; };
 		E2DC5EDF29ECE74F00A93D90 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC5EDE29ECE74F00A93D90 /* HomePage.swift */; };
 		E2FD6AD629EEC3EF006FAB8F /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FD6AD529EEC3EF006FAB8F /* TabView.swift */; };
@@ -66,9 +69,14 @@
 		E238E77729E707FC00A2589F /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		E24D64A229E8FA2F00044D40 /* PaymentSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessView.swift; sourceTree = "<group>"; };
 		E2A886CB29EA4C8500F04FAD /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		E2B3449F29EFB4EF00D9C06D /* AntiSpy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AntiSpy.entitlements; sourceTree = "<group>"; };
 		E2B4E43E29EE390D004D83A0 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		E2B4E44029EE3A67004D83A0 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		E2C5E10429E888FC00545261 /* RedirectingWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectingWebView.swift; sourceTree = "<group>"; };
+		E2C7BFBF29F2611100ACB017 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E2C7BFC129F29BAD00ACB017 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E2D006D229F034220089571F /* SubscriptionTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionTestView.swift; sourceTree = "<group>"; };
+		E2D006D429F038660089571F /* SubscriptioinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptioinManager.swift; sourceTree = "<group>"; };
 		E2DC5EDC29ECDCE000A93D90 /* StopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopView.swift; sourceTree = "<group>"; };
 		E2DC5EDE29ECE74F00A93D90 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		E2FD6AD529EEC3EF006FAB8F /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -85,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2C7BFC029F2611100ACB017 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +119,7 @@
 			children = (
 				E202D66B29ED897B00CCF082 /* Activity.swift */,
 				E2B4E43E29EE390D004D83A0 /* SideMenu.swift */,
+				E2D006D429F038660089571F /* SubscriptioinManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,6 +131,7 @@
 				E215999D29E6BF04000FA331 /* AntiSpyTests */,
 				E21599A729E6BF04000FA331 /* AntiSpyUITests */,
 				E215998B29E6BECC000FA331 /* Products */,
+				E2D006D629F072C50089571F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +148,8 @@
 		E215998C29E6BECC000FA331 /* AntiSpy */ = {
 			isa = PBXGroup;
 			children = (
+				E2C7BFC129F29BAD00ACB017 /* Info.plist */,
+				E2B3449F29EFB4EF00D9C06D /* AntiSpy.entitlements */,
 				E202D66A29ED891E00CCF082 /* Models */,
 				E238E77429E7074900A2589F /* Views */,
 				E215998D29E6BECC000FA331 /* AntiSpyApp.swift */,
@@ -190,8 +203,17 @@
 				E2B4E44029EE3A67004D83A0 /* SideMenuView.swift */,
 				E2FD6AE529EED557006FAB8F /* SideMenuContainerView.swift */,
 				E2FD6AD529EEC3EF006FAB8F /* TabView.swift */,
+				E2D006D229F034220089571F /* SubscriptionTestView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E2D006D629F072C50089571F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2C7BFBF29F2611100ACB017 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,9 +357,11 @@
 				E215998E29E6BECC000FA331 /* AntiSpyApp.swift in Sources */,
 				E202D66C29ED897D00CCF082 /* Activity.swift in Sources */,
 				E2B4E43F29EE390D004D83A0 /* SideMenu.swift in Sources */,
+				E2D006D329F034230089571F /* SubscriptionTestView.swift in Sources */,
 				E238E77829E707FC00A2589F /* SubscriptionView.swift in Sources */,
 				E2FD6ADC29EEC560006FAB8F /* ShareView.swift in Sources */,
 				E2FD6AE029EEC6D7006FAB8F /* PrivacyPolicyView.swift in Sources */,
+				E2D006D529F038660089571F /* SubscriptioinManager.swift in Sources */,
 				E2FD6ADE29EEC607006FAB8F /* RateView.swift in Sources */,
 				E2FD6AD629EEC3EF006FAB8F /* TabView.swift in Sources */,
 				E2FD6AE229EEC7B0006FAB8F /* CancelSubscriptionView.swift in Sources */,
@@ -498,14 +522,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = AntiSpy/AntiSpy.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AntiSpy/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9J4F4CLX56;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AntiSpy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Splash Screen.storyboard";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Splash Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -514,8 +544,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ioscodev.AntiSpy;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiftiosapp.antispy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SwiftIOSAntiSpyApp;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -527,14 +560,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = AntiSpy/AntiSpy.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AntiSpy/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9J4F4CLX56;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AntiSpy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Splash Screen.storyboard";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Splash Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -543,8 +582,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ioscodev.AntiSpy;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiftiosapp.antispy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SwiftIOSAntiSpyApp;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
