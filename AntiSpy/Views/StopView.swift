@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct StopView: View {
+    @Binding var backgroundTaskID: UIBackgroundTaskIdentifier
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State var mainTab: Int? = nil
     @State var deleteActity = true
@@ -38,6 +39,7 @@ struct StopView: View {
                             
                             NavigationLink(destination: MainTabView(), tag: 4, selection: $mainTab) {
                                 Button(action: {
+                                    self.endBackgroundTask()
                                     self.mainTab = 4
                                 }) {
                                     HStack() {
@@ -149,19 +151,23 @@ struct StopView: View {
             }
         }
     }
+    func endBackgroundTask() {
+        UIApplication.shared.endBackgroundTask(backgroundTaskID)
+        backgroundTaskID = .invalid
+    }
 }
 
 struct StopView_Previews: PreviewProvider {
     static var previews: some View {
-        StopView()
+        StopView(backgroundTaskID: .constant(.invalid))
             .previewDevice(PreviewDevice(rawValue: "iPhone SE (3rd generation)"))
             .previewDisplayName("Stop View")
         
-        StopView()
+        StopView(backgroundTaskID: .constant(.invalid))
             .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro"))
             .previewDisplayName("Stop View (2)")
         
-        StopView()
+        StopView(backgroundTaskID: .constant(.invalid))
             .previewDevice(PreviewDevice(rawValue: "iPhone 14"))
             .previewDisplayName("Stop View(3)")
     }

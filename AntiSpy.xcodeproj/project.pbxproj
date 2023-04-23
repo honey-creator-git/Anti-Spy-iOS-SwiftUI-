@@ -18,6 +18,7 @@
 		E21599B829E6E773000FA331 /* Splash Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21599B729E6E773000FA331 /* Splash Screen.storyboard */; };
 		E238E77829E707FC00A2589F /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238E77729E707FC00A2589F /* SubscriptionView.swift */; };
 		E24D64A329E8FA2F00044D40 /* PaymentSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D64A229E8FA2F00044D40 /* PaymentSuccessView.swift */; };
+		E2851D6F29F3913500C19636 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2851D6E29F3913500C19636 /* LocationHelper.swift */; };
 		E2A886CC29EA4C8500F04FAD /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A886CB29EA4C8500F04FAD /* StartView.swift */; };
 		E2B4E43F29EE390D004D83A0 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E43E29EE390D004D83A0 /* SideMenu.swift */; };
 		E2B4E44129EE3A67004D83A0 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E44029EE3A67004D83A0 /* SideMenuView.swift */; };
@@ -68,6 +69,7 @@
 		E21599B729E6E773000FA331 /* Splash Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Splash Screen.storyboard"; sourceTree = "<group>"; };
 		E238E77729E707FC00A2589F /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		E24D64A229E8FA2F00044D40 /* PaymentSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessView.swift; sourceTree = "<group>"; };
+		E2851D6E29F3913500C19636 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		E2A886CB29EA4C8500F04FAD /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		E2B3449F29EFB4EF00D9C06D /* AntiSpy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AntiSpy.entitlements; sourceTree = "<group>"; };
 		E2B4E43E29EE390D004D83A0 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		E215998C29E6BECC000FA331 /* AntiSpy */ = {
 			isa = PBXGroup;
 			children = (
+				E2851D6D29F390ED00C19636 /* Helpers */,
 				E2C7BFC129F29BAD00ACB017 /* Info.plist */,
 				E2B3449F29EFB4EF00D9C06D /* AntiSpy.entitlements */,
 				E202D66A29ED891E00CCF082 /* Models */,
@@ -206,6 +209,14 @@
 				E2D006D229F034220089571F /* SubscriptionTestView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E2851D6D29F390ED00C19636 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E2851D6E29F3913500C19636 /* LocationHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		E2D006D629F072C50089571F /* Frameworks */ = {
@@ -359,6 +370,7 @@
 				E2B4E43F29EE390D004D83A0 /* SideMenu.swift in Sources */,
 				E2D006D329F034230089571F /* SubscriptionTestView.swift in Sources */,
 				E238E77829E707FC00A2589F /* SubscriptionView.swift in Sources */,
+				E2851D6F29F3913500C19636 /* LocationHelper.swift in Sources */,
 				E2FD6ADC29EEC560006FAB8F /* ShareView.swift in Sources */,
 				E2FD6AE029EEC6D7006FAB8F /* PrivacyPolicyView.swift in Sources */,
 				E2D006D529F038660089571F /* SubscriptioinManager.swift in Sources */,
@@ -533,6 +545,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AntiSpy/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "For AntiSpy";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Splash Screen";
@@ -571,6 +584,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AntiSpy/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "For AntiSpy";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Splash Screen";

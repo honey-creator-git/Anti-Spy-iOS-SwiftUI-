@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 struct StartView: View{
+    @State var backgroundTaskID: UIBackgroundTaskIdentifier = .invalid
+    @State private var appsRunningWithLocation: [String] = []
+
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State var stopPageTab: Int? = nil
     @State var deleteActity = true
@@ -36,8 +39,9 @@ struct StartView: View{
                                 .font(.system(size: 18))
                                 .foregroundColor(.white)
                             
-                            NavigationLink(destination: StopView(), tag: 3, selection: $stopPageTab) {
+                            NavigationLink(destination: StopView(backgroundTaskID: $backgroundTaskID), tag: 3, selection: $stopPageTab) {
                                 Button(action: {
+                                    self.startBackgroundTask()
                                     self.stopPageTab = 3
                                 }) {
                                     HStack() {
@@ -148,6 +152,28 @@ struct StartView: View{
                 .ignoresSafeArea(edges: .vertical)
             }
         }
+    }
+    func startBackgroundTask() {
+        backgroundTaskID = UIApplication.shared.beginBackgroundTask {
+            startBackgroundTask()
+        }
+        
+        DispatchQueue.global().async {
+            // Perform your background task here
+            Thread.sleep(forTimeInterval: 1)
+            startBackgroundTask()
+        }
+        
+        appsRunningWithLocation = getAppsUsingLocation()
+        print("Apps Running With Location => ", appsRunningWithLocation)
+        
+        if(self.notification == true) {
+            endBackgroundTask()
+        }
+    }
+    func endBackgroundTask() {
+        UIApplication.shared.endBackgroundTask(backgroundTaskID)
+        backgroundTaskID = .invalid
     }
 }
 
