@@ -7,16 +7,23 @@
 
 import Foundation
 import SwiftUI
-
 struct StartView: View{
-    @State var backgroundTaskID: UIBackgroundTaskIdentifier = .invalid
     @State private var appsRunningWithLocation: [String] = []
-
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    @State var stopPageTab: Int? = nil
+    @State var mainTab: Int? = nil
     @State var deleteActity = true
     @State var vibration = true
     @State var notification = false
+    @State var detectActivity: Int = 0
+    
+    @State var isPhoto = false
+    @State var isMicrophone = false
+    @State var isLocation = false
+    
+    init() {
+        self.detectActivity = 0
+        print("Initialization!")
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -39,15 +46,28 @@ struct StartView: View{
                                 .font(.system(size: 18))
                                 .foregroundColor(.white)
                             
-                            NavigationLink(destination: StopView(backgroundTaskID: $backgroundTaskID), tag: 3, selection: $stopPageTab) {
+                            NavigationLink(destination: detectActivity == 2 ? MainTabView() : nil, tag: 4, selection: $mainTab) {
                                 Button(action: {
-                                    self.startBackgroundTask()
-                                    self.stopPageTab = 3
-                                }) {
-                                    HStack() {
-                                        Image("StartLogoImage")
+                                    if(detectActivity == 1) {
+                                        BackgroundTaskService.shared.cancelBackgroundTask()
+                                        self.mainTab = 4
+                                        self.detectActivity = 2
+                                    } else if(detectActivity == 0) {
+                                        BackgroundTaskService.shared.scheduleBackgroundTask()
+                                        self.detectActivity = 1
                                     }
-                                    .padding(.vertical, 30)
+                                }) {
+                                    if(detectActivity == 1) {
+                                        HStack() {
+                                            Image("StopLogoImage")
+                                        }
+                                        .padding(.vertical, 30)
+                                    } else {
+                                        HStack() {
+                                            Image("StartLogoImage")
+                                        }
+                                        .padding(.vertical, 30)
+                                    }
                                 }
                             }
                             
@@ -111,19 +131,22 @@ struct StartView: View{
                             HStack() {
                                 HStack(spacing: 70.0) {
                                     Button(action: {
-                                        
+                                        self.isPhoto = !self.isPhoto
+                                        BackgroundTaskService.isPhoto = self.isPhoto
                                     }) {
-                                        Image("CameraLogoImage")
+                                        Image("CameraIconImage")
                                     }
                                     
                                     Button(action: {
-                                        
+                                        self.isMicrophone = !self.isMicrophone
+                                        BackgroundTaskService.isMicrophone=self.isMicrophone
                                     }) {
                                         Image("AudioLogoImage")
                                     }
                                     
                                     Button(action: {
-                                        
+                                        self.isLocation = !self.isLocation
+                                        BackgroundTaskService.isLocation=self.isLocation
                                     }) {
                                         Image("LocationLogoImage")
                                     }
@@ -152,28 +175,6 @@ struct StartView: View{
                 .ignoresSafeArea(edges: .vertical)
             }
         }
-    }
-    func startBackgroundTask() {
-        backgroundTaskID = UIApplication.shared.beginBackgroundTask {
-            startBackgroundTask()
-        }
-        
-        DispatchQueue.global().async {
-            // Perform your background task here
-            Thread.sleep(forTimeInterval: 1)
-            startBackgroundTask()
-        }
-        
-        appsRunningWithLocation = getAppsUsingLocation()
-        print("Apps Running With Location => ", appsRunningWithLocation)
-        
-        if(self.notification == true) {
-            endBackgroundTask()
-        }
-    }
-    func endBackgroundTask() {
-        UIApplication.shared.endBackgroundTask(backgroundTaskID)
-        backgroundTaskID = .invalid
     }
 }
 

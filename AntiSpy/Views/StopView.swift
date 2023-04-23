@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 struct StopView: View {
-    @Binding var backgroundTaskID: UIBackgroundTaskIdentifier
+//    @Binding var backgroundTaskID: UIBackgroundTaskIdentifier
+    @Binding var detectActivity: Bool
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State var mainTab: Int? = nil
     @State var deleteActity = true
@@ -152,22 +153,23 @@ struct StopView: View {
         }
     }
     func endBackgroundTask() {
-        UIApplication.shared.endBackgroundTask(backgroundTaskID)
-        backgroundTaskID = .invalid
+//        UIApplication.shared.endBackgroundTask(backgroundTaskID)
+//        backgroundTaskID = .invalid
+        detectActivity = false
     }
 }
 
 struct StopView_Previews: PreviewProvider {
     static var previews: some View {
-        StopView(backgroundTaskID: .constant(.invalid))
+        StopView(detectActivity: .constant(false))
             .previewDevice(PreviewDevice(rawValue: "iPhone SE (3rd generation)"))
             .previewDisplayName("Stop View")
         
-        StopView(backgroundTaskID: .constant(.invalid))
+        StopView(detectActivity: .constant(false))
             .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro"))
             .previewDisplayName("Stop View (2)")
         
-        StopView(backgroundTaskID: .constant(.invalid))
+        StopView(detectActivity: .constant(false))
             .previewDevice(PreviewDevice(rawValue: "iPhone 14"))
             .previewDisplayName("Stop View(3)")
     }

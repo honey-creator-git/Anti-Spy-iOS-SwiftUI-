@@ -22,6 +22,7 @@
 		E2A886CC29EA4C8500F04FAD /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A886CB29EA4C8500F04FAD /* StartView.swift */; };
 		E2B4E43F29EE390D004D83A0 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E43E29EE390D004D83A0 /* SideMenu.swift */; };
 		E2B4E44129EE3A67004D83A0 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E44029EE3A67004D83A0 /* SideMenuView.swift */; };
+		E2BEFA6929F597B900866C5F /* BackgroundTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BEFA6829F597B900866C5F /* BackgroundTaskService.swift */; };
 		E2C5E10529E888FC00545261 /* RedirectingWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5E10429E888FC00545261 /* RedirectingWebView.swift */; };
 		E2C7BFC029F2611100ACB017 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C7BFBF29F2611100ACB017 /* StoreKit.framework */; };
 		E2D006D329F034230089571F /* SubscriptionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D006D229F034220089571F /* SubscriptionTestView.swift */; };
@@ -74,6 +75,7 @@
 		E2B3449F29EFB4EF00D9C06D /* AntiSpy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AntiSpy.entitlements; sourceTree = "<group>"; };
 		E2B4E43E29EE390D004D83A0 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		E2B4E44029EE3A67004D83A0 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		E2BEFA6829F597B900866C5F /* BackgroundTaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTaskService.swift; sourceTree = "<group>"; };
 		E2C5E10429E888FC00545261 /* RedirectingWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectingWebView.swift; sourceTree = "<group>"; };
 		E2C7BFBF29F2611100ACB017 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E2C7BFC129F29BAD00ACB017 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				E2851D6E29F3913500C19636 /* LocationHelper.swift */,
+				E2BEFA6829F597B900866C5F /* BackgroundTaskService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2BEFA6929F597B900866C5F /* BackgroundTaskService.swift in Sources */,
 				E2C5E10529E888FC00545261 /* RedirectingWebView.swift in Sources */,
 				E24D64A329E8FA2F00044D40 /* PaymentSuccessView.swift in Sources */,
 				E2DC5EDD29ECDCE000A93D90 /* StopView.swift in Sources */,
