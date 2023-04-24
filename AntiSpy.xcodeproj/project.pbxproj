@@ -20,6 +20,7 @@
 		E24D64A329E8FA2F00044D40 /* PaymentSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D64A229E8FA2F00044D40 /* PaymentSuccessView.swift */; };
 		E25C981A29F627E2006A9853 /* VibrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25C981929F627E1006A9853 /* VibrationHelper.swift */; };
 		E25C981C29F627FA006A9853 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25C981B29F627FA006A9853 /* NotificationHelper.swift */; };
+		E25C981F29F660E8006A9853 /* MicrophoneHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25C981E29F660E8006A9853 /* MicrophoneHelper.swift */; };
 		E2851D6F29F3913500C19636 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2851D6E29F3913500C19636 /* LocationHelper.swift */; };
 		E2A886CC29EA4C8500F04FAD /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A886CB29EA4C8500F04FAD /* StartView.swift */; };
 		E2B2A8AD29F5FBDD00945ABD /* CameraHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B2A8AC29F5FBDD00945ABD /* CameraHelper.swift */; };
@@ -76,6 +77,7 @@
 		E25C981929F627E1006A9853 /* VibrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationHelper.swift; sourceTree = "<group>"; };
 		E25C981B29F627FA006A9853 /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		E25C981D29F63D15006A9853 /* AntiSpyRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AntiSpyRelease.entitlements; sourceTree = "<group>"; };
+		E25C981E29F660E8006A9853 /* MicrophoneHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneHelper.swift; sourceTree = "<group>"; };
 		E2851D6E29F3913500C19636 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		E2A886CB29EA4C8500F04FAD /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		E2B2A8AC29F5FBDD00945ABD /* CameraHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHelper.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				E2B2A8AC29F5FBDD00945ABD /* CameraHelper.swift */,
 				E25C981929F627E1006A9853 /* VibrationHelper.swift */,
 				E25C981B29F627FA006A9853 /* NotificationHelper.swift */,
+				E25C981E29F660E8006A9853 /* MicrophoneHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2BEFA6929F597B900866C5F /* BackgroundTaskService.swift in Sources */,
+				E25C981F29F660E8006A9853 /* MicrophoneHelper.swift in Sources */,
 				E2C5E10529E888FC00545261 /* RedirectingWebView.swift in Sources */,
 				E24D64A329E8FA2F00044D40 /* PaymentSuccessView.swift in Sources */,
 				E2DC5EDD29ECDCE000A93D90 /* StopView.swift in Sources */,

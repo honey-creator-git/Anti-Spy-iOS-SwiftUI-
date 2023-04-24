@@ -9,6 +9,12 @@ import Foundation
 import SwiftUI
 
 func makeVibration(){
-    let generator = UINotificationFeedbackGenerator()
-    generator.notificationOccurred(.success)
+    // Create a UIImpactFeedbackGenerator instance
+    let generator = UIImpactFeedbackGenerator(style: .heavy)
+
+    // Prepare the generator (optional)
+    generator.prepare()
+
+    // Trigger the generator to emit the vibration
+    generator.impactOccurred()
 }

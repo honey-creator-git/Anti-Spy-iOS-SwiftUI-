@@ -10,6 +10,9 @@ import SwiftUI
 
 struct HomePage: View {
     @Binding var presentSideMenu: Bool
+    @State var isCamera = true
+    @State var isMicrophone = false
+    @State var isLocation = false
     var activities: [Activity] = [
         Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "WhatsApp", iconName: "WhatsAppLogoImage", serviceName: "CameraWhiteIconImage", period: "0:00:30"),
         Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Facebook", iconName: "FacebookLogoImage", serviceName: "LocationIconImage", period: "0:00:30"),
@@ -129,21 +132,48 @@ struct HomePage: View {
                                 HStack() {
                                     HStack(spacing: 70.0) {
                                         Button(action: {
-                                            
+                                            self.isCamera = !self.isCamera
+                                            if(self.isCamera == true) {
+                                                self.isMicrophone = false
+                                                self.isLocation = false
+                                            }
                                         }) {
-                                            Image("CameraLogoImage")
+                                            if(self.isCamera == true) {
+                                                Image("CameraIconImage")
+                                            } else if(self.isCamera == false) {
+                                                Image("CameraIconImage")
+                                                    .opacity(0.5)
+                                            }
                                         }
                                         
                                         Button(action: {
-                                            
+                                            self.isMicrophone = !self.isMicrophone
+                                            if(self.isMicrophone == true) {
+                                                self.isCamera = false
+                                                self.isLocation = false
+                                            }
                                         }) {
-                                            Image("AudioLogoImage")
+                                            if(self.isMicrophone == true) {
+                                                Image("AudioLogoImage")
+                                            } else if(self.isMicrophone == false) {
+                                                Image("AudioLogoImage")
+                                                    .opacity(0.5)
+                                            }
                                         }
                                         
                                         Button(action: {
-                                            
+                                            self.isLocation = !self.isLocation
+                                            if(self.isLocation == true) {
+                                                self.isMicrophone = false
+                                                self.isCamera = false
+                                            }
                                         }) {
-                                            Image("LocationLogoImage")
+                                            if(self.isLocation == true) {
+                                                Image("LocationLogoImage")
+                                            } else if(self.isLocation == false) {
+                                                Image("LocationLogoImage")
+                                                    .opacity(0.5)
+                                            }
                                         }
                                     }
                                     .padding()

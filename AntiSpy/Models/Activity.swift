@@ -15,4 +15,5 @@ struct Activity: Decodable, Hashable, Identifiable {
     var iconName: String
     var serviceName: String
     var period: String
+    var slug: String?
 }

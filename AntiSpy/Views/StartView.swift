@@ -11,7 +11,7 @@ struct StartView: View{
     @State private var appsRunningWithLocation: [String] = []
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State var mainTab: Int? = nil
-    @State var deleteActity = true
+    @State var deleteActity = false
     @State var vibration = true
     @State var notification = false
     @State var detectActivity: Int = 0
@@ -87,6 +87,10 @@ struct StartView: View{
                                         }
                                     })
                                     .toggleStyle(SwitchToggleStyle(tint: Color("ToggleButtonColor")))
+                                    .onChange(of: deleteActity) { newValue in
+                                        print("Toggle is now \(newValue ? "on" : "off")")
+                                        BackgroundTaskService.enFilter = newValue
+                                    }
                                 }
                             }
                             .frame(maxWidth: .infinity)
@@ -112,6 +116,10 @@ struct StartView: View{
                                         }
                                     })
                                     .toggleStyle(SwitchToggleStyle(tint: Color("ToggleButtonColor")))
+                                    .onChange(of: vibration) { newValue in
+                                        print("Toggle is now \(newValue ? "on" : "off")")
+                                        BackgroundTaskService.enVibration = newValue
+                                    }
                                 }
                                 
                                 HStack() {
@@ -124,6 +132,10 @@ struct StartView: View{
                                         }
                                     })
                                     .toggleStyle(SwitchToggleStyle(tint: Color("ToggleButtonColor")))
+                                    .onChange(of: notification) { newValue in
+                                        print("Toggle is now \(newValue ? "on" : "off")")
+                                        BackgroundTaskService.enNotification = newValue
+                                    }
                                 }
                             }
                             .frame(maxWidth: .infinity)

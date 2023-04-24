@@ -12,13 +12,13 @@ class BackgroundTaskService {
     
     static let shared = BackgroundTaskService()
     
-    static var isCamera = false
+    static var isCamera = true
     static var isMicrophone = false
     static var isLocation = false
     static var activities: [Activity] = []
-    static var countUsingPhoto = 0
-    static var countUsingMicrophone = 0
-    static var countUsingLocation = 0
+    static var enNotification = false
+    static var enVibration = false
+    static var enFilter = false
     var timer: Timer?
     var backgroundTask: UIBackgroundTaskIdentifier = .invalid
     
@@ -35,9 +35,25 @@ class BackgroundTaskService {
         timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
 
             // Handle your background task logic here
+            var apps:[Activity] = []
             if(BackgroundTaskService.isLocation) {
-              print(getAppsUsingLocation())
+                apps = apps + getAppsUsingLocation()
             }
+            
+            if(BackgroundTaskService.isCamera) {
+                apps = apps + getAppsUsingCamera()
+            }
+            
+            if(BackgroundTaskService.isMicrophone) {
+                apps = apps + getAppsUsingMicrophone()
+            }
+            
+            self.processActivity(activities_: apps)
+            
+            if(BackgroundTaskService.enFilter == true){
+                self.filterActivity()
+            }
+            
             print("Background task running for location!")
         }
         RunLoop.current.add(timer!, forMode: .default)
@@ -50,6 +66,72 @@ class BackgroundTaskService {
             UIApplication.shared.endBackgroundTask(backgroundTask)
             backgroundTask = .invalid
             print("Background task stopped")
+        }
+    }
+    
+    func filterActivity(){
+        let filtered = BackgroundTaskService.activities.filter{
+            getDurationByDate(from: $0.startDate+" "+$0.startTime, duration: $0.period)
+        }
+        BackgroundTaskService.activities = filtered
+    }
+    
+    func getDurationByDate(from: String, duration: String) -> Bool{
+        let formatter = DateFormatter()
+        let calendar = Calendar.current
+        formatter.dateFormat = "dd/MM h"
+        var durationComponents = DateComponents()
+        if let durationDate = formatter.date(from: duration) {
+            durationComponents = calendar.dateComponents([.day, .hour], from: durationDate)
+        }
+        
+        let currentDate = Date()
+        let startTime = calendar.date(byAdding: durationComponents, to: formatter.date(from: from)!)
+        
+        let components = calendar.dateComponents([.month, .day], from: startTime!, to: currentDate)
+        
+        let durationMonth = components.month as Int? ?? 0
+        let durationDay = components.day as Int? ?? 0
+        
+        let isOld = durationDay + durationMonth < 2
+        return isOld
+    }
+    
+    func processActivity(activities_: [Activity]){
+        activities_.forEach {
+            activity in
+            if var app = BackgroundTaskService.activities.first(where:{$0.slug == activity.slug}){
+                
+                /*
+                 Duration
+                */
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+                let startTime = formatter.date(from: app.startTime)!
+                let endTime = formatter.date(from: activity.startTime)!
+                let calendar = Calendar.current
+                let components = calendar.dateComponents([.hour, .minute], from: startTime, to: endTime)
+                let duration = String(format: "%02d:%02d:%02d", components.hour!, components.minute!)
+                print("Duration: \(duration)")
+                
+                if let idx = BackgroundTaskService.activities.firstIndex(of: app) {
+                    app.period = duration
+                    BackgroundTaskService.activities[idx] = app
+                }
+                
+            } else {
+                BackgroundTaskService.activities.append(activity)
+                if(BackgroundTaskService.enVibration == true)
+                {
+                    makeVibration()
+                    
+                }
+                if(BackgroundTaskService.enNotification == true)
+                {
+                    makeNotification(title: "Location Alert", body: activity.name+" accessed the location")
+                    
+                }
+            }
         }
     }
     

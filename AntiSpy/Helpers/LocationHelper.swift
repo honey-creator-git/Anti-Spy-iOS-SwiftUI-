@@ -28,10 +28,11 @@ func getAppsUsingLocation() -> [Activity] {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "dd/MM/yyyy"
                 let dateString = formatter.string(from: currentDate)
-                formatter.dateFormat = "h:mm:ss a"
+                formatter.dateFormat = "HH:mm:ss a"
                 let timeString = formatter.string(from: currentDate)
+                let slug = appName+dateString+timeString+"_location"
                 appsUsingLocation.append(
-                Activity(startDate: dateString, startTime: timeString, name: appName, iconName: iconName, serviceName: "MicroPhoneIconImage", period: "")
+                    Activity(startDate: dateString, startTime: timeString, name: appName, iconName: iconName, serviceName: "MicroPhoneIconImage", period: "", slug: slug)
                 )
             }
         }

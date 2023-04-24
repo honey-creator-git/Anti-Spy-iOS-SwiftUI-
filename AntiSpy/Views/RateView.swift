@@ -60,15 +60,15 @@ struct RateView: View {
                         }
                         .frame(maxWidth: UIScreen.main.bounds.width, alignment: .center)
                         
-                        VStack() {
-                            Button(action: {
-                                
-                            }) {
-                                Image("CancelSubscriptionIconImage")
-                            }
-                        }
-                        .frame(maxWidth: UIScreen.main.bounds.width, alignment: .trailing)
-                        .padding(.horizontal, 20)
+//                        VStack() {
+//                            Button(action: {
+//
+//                            }) {
+//                                Image("CancelSubscriptionIconImage")
+//                            }
+//                        }
+//                        .frame(maxWidth: UIScreen.main.bounds.width, alignment: .trailing)
+//                        .padding(.horizontal, 20)
                     }
                     
                     if(activities.count > 0) {

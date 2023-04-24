@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import UserNotifications
 
-func makeNotification() {
+func makeNotification(title: String, body: String) {
     // Request permission to display notifications
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
         if let error = error {
@@ -27,8 +27,8 @@ func makeNotification() {
 
     // Create a notification content object
     let content = UNMutableNotificationContent()
-    content.title = "My Notification Title"
-    content.body = "This is the body of my notification."
+    content.title = title
+    content.body = body
     content.sound = UNNotificationSound.default
 
     // Create a trigger for the notification (in this case, trigger it after 5 seconds)
