@@ -47,25 +47,25 @@ struct StartView: View{
                                 .font(.system(size: 18))
                                 .foregroundColor(.white)
                             
-                            NavigationLink(destination: detectActivity == 2 ? MainTabView() : nil, tag: 4, selection: $mainTab) {
+                            NavigationLink(destination: MainTabView(), tag: 4, selection: $mainTab) {
                                 Button(action: {
-                                    if(detectActivity == 1) {
-                                        BackgroundTaskService.shared.cancelBackgroundTask()
-                                        self.mainTab = 4
-                                        self.detectActivity = 2
-                                    } else if(detectActivity == 0) {
+                                    if(detectActivity == 0) {
                                         BackgroundTaskService.shared.scheduleBackgroundTask()
                                         self.detectActivity = 1
+                                    } else if(self.detectActivity == 1){
+                                        BackgroundTaskService.shared.cancelBackgroundTask()
+                                        self.detectActivity = 0
+                                        self.mainTab = 4
                                     }
                                 }) {
-                                    if(detectActivity == 1) {
-                                        HStack() {
-                                            Image("StopLogoImage")
-                                        }
-                                        .padding(.vertical, 30)
-                                    } else {
+                                    if(detectActivity == 0) {
                                         HStack() {
                                             Image("StartLogoImage")
+                                        }
+                                        .padding(.vertical, 30)
+                                    } else if(detectActivity == 1){
+                                        HStack() {
+                                            Image("StopLogoImage")
                                         }
                                         .padding(.vertical, 30)
                                     }

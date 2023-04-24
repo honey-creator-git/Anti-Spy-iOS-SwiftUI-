@@ -18,6 +18,8 @@
 		E21599B829E6E773000FA331 /* Splash Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21599B729E6E773000FA331 /* Splash Screen.storyboard */; };
 		E238E77829E707FC00A2589F /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238E77729E707FC00A2589F /* SubscriptionView.swift */; };
 		E24D64A329E8FA2F00044D40 /* PaymentSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D64A229E8FA2F00044D40 /* PaymentSuccessView.swift */; };
+		E25C981A29F627E2006A9853 /* VibrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25C981929F627E1006A9853 /* VibrationHelper.swift */; };
+		E25C981C29F627FA006A9853 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25C981B29F627FA006A9853 /* NotificationHelper.swift */; };
 		E2851D6F29F3913500C19636 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2851D6E29F3913500C19636 /* LocationHelper.swift */; };
 		E2A886CC29EA4C8500F04FAD /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A886CB29EA4C8500F04FAD /* StartView.swift */; };
 		E2B2A8AD29F5FBDD00945ABD /* CameraHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B2A8AC29F5FBDD00945ABD /* CameraHelper.swift */; };
@@ -71,6 +73,9 @@
 		E21599B729E6E773000FA331 /* Splash Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Splash Screen.storyboard"; sourceTree = "<group>"; };
 		E238E77729E707FC00A2589F /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		E24D64A229E8FA2F00044D40 /* PaymentSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessView.swift; sourceTree = "<group>"; };
+		E25C981929F627E1006A9853 /* VibrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationHelper.swift; sourceTree = "<group>"; };
+		E25C981B29F627FA006A9853 /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
+		E25C981D29F63D15006A9853 /* AntiSpyRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AntiSpyRelease.entitlements; sourceTree = "<group>"; };
 		E2851D6E29F3913500C19636 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		E2A886CB29EA4C8500F04FAD /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		E2B2A8AC29F5FBDD00945ABD /* CameraHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHelper.swift; sourceTree = "<group>"; };
@@ -154,6 +159,7 @@
 		E215998C29E6BECC000FA331 /* AntiSpy */ = {
 			isa = PBXGroup;
 			children = (
+				E25C981D29F63D15006A9853 /* AntiSpyRelease.entitlements */,
 				E2851D6D29F390ED00C19636 /* Helpers */,
 				E2C7BFC129F29BAD00ACB017 /* Info.plist */,
 				E2B3449F29EFB4EF00D9C06D /* AntiSpy.entitlements */,
@@ -221,6 +227,8 @@
 				E2851D6E29F3913500C19636 /* LocationHelper.swift */,
 				E2BEFA6829F597B900866C5F /* BackgroundTaskService.swift */,
 				E2B2A8AC29F5FBDD00945ABD /* CameraHelper.swift */,
+				E25C981929F627E1006A9853 /* VibrationHelper.swift */,
+				E25C981B29F627FA006A9853 /* NotificationHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -378,7 +386,9 @@
 				E2B4E43F29EE390D004D83A0 /* SideMenu.swift in Sources */,
 				E2D006D329F034230089571F /* SubscriptionTestView.swift in Sources */,
 				E238E77829E707FC00A2589F /* SubscriptionView.swift in Sources */,
+				E25C981A29F627E2006A9853 /* VibrationHelper.swift in Sources */,
 				E2851D6F29F3913500C19636 /* LocationHelper.swift in Sources */,
+				E25C981C29F627FA006A9853 /* NotificationHelper.swift in Sources */,
 				E2FD6ADC29EEC560006FAB8F /* ShareView.swift in Sources */,
 				E2FD6AE029EEC6D7006FAB8F /* PrivacyPolicyView.swift in Sources */,
 				E2D006D529F038660089571F /* SubscriptioinManager.swift in Sources */,
@@ -581,7 +591,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = AntiSpy/AntiSpy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AntiSpy/AntiSpyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
