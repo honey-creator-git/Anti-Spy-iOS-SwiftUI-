@@ -13,7 +13,7 @@ class BackgroundTaskService {
     
     static let shared = BackgroundTaskService()
     
-    static var isPhoto = false
+    static var isCamera = false
     static var isMicrophone = false
     static var isLocation = false
     static var activities: [Activity] = []
@@ -39,7 +39,7 @@ class BackgroundTaskService {
             if(BackgroundTaskService.isLocation) {
               print(getAppsUsingLocation())
             }
-            print("Background task running!")
+            print("Background task running for location!")
         }
         timer.tolerance = 5
         RunLoop.current.add(timer, forMode: .default)

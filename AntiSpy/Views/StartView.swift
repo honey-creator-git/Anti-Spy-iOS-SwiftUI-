@@ -16,12 +16,13 @@ struct StartView: View{
     @State var notification = false
     @State var detectActivity: Int = 0
     
-    @State var isPhoto = false
+    @State var isCamera = true
     @State var isMicrophone = false
     @State var isLocation = false
     
     init() {
         self.detectActivity = 0
+        self.isCamera = true
         print("Initialization!")
     }
     
@@ -131,24 +132,51 @@ struct StartView: View{
                             HStack() {
                                 HStack(spacing: 70.0) {
                                     Button(action: {
-                                        self.isPhoto = !self.isPhoto
-                                        BackgroundTaskService.isPhoto = self.isPhoto
+                                        self.isCamera = !self.isCamera
+                                        if(self.isCamera == true) {
+                                            self.isMicrophone = false
+                                            self.isLocation = false
+                                        }
+                                        BackgroundTaskService.isCamera = self.isCamera
                                     }) {
-                                        Image("CameraIconImage")
+                                        if(self.isCamera == true) {
+                                            Image("CameraIconImage")
+                                        } else if(self.isCamera == false) {
+                                            Image("CameraIconImage")
+                                                .opacity(0.5)
+                                        }
                                     }
                                     
                                     Button(action: {
                                         self.isMicrophone = !self.isMicrophone
+                                        if(self.isMicrophone == true) {
+                                            self.isCamera = false
+                                            self.isLocation = false
+                                        }
                                         BackgroundTaskService.isMicrophone=self.isMicrophone
                                     }) {
-                                        Image("AudioLogoImage")
+                                        if(self.isMicrophone == true) {
+                                            Image("AudioLogoImage")
+                                        } else if(self.isMicrophone == false) {
+                                            Image("AudioLogoImage")
+                                                .opacity(0.5)
+                                        }
                                     }
                                     
                                     Button(action: {
                                         self.isLocation = !self.isLocation
+                                        if(self.isLocation == true) {
+                                            self.isMicrophone = false
+                                            self.isCamera = false
+                                        }
                                         BackgroundTaskService.isLocation=self.isLocation
                                     }) {
-                                        Image("LocationLogoImage")
+                                        if(self.isLocation == true) {
+                                            Image("LocationLogoImage")
+                                        } else if(self.isLocation == false) {
+                                            Image("LocationLogoImage")
+                                                .opacity(0.5)
+                                        }
                                     }
                                 }
                                 .padding()

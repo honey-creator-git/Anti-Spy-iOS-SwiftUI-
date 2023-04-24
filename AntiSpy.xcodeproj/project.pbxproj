@@ -20,6 +20,7 @@
 		E24D64A329E8FA2F00044D40 /* PaymentSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D64A229E8FA2F00044D40 /* PaymentSuccessView.swift */; };
 		E2851D6F29F3913500C19636 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2851D6E29F3913500C19636 /* LocationHelper.swift */; };
 		E2A886CC29EA4C8500F04FAD /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A886CB29EA4C8500F04FAD /* StartView.swift */; };
+		E2B2A8AD29F5FBDD00945ABD /* CameraHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B2A8AC29F5FBDD00945ABD /* CameraHelper.swift */; };
 		E2B4E43F29EE390D004D83A0 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E43E29EE390D004D83A0 /* SideMenu.swift */; };
 		E2B4E44129EE3A67004D83A0 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E44029EE3A67004D83A0 /* SideMenuView.swift */; };
 		E2BEFA6929F597B900866C5F /* BackgroundTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BEFA6829F597B900866C5F /* BackgroundTaskService.swift */; };
@@ -72,6 +73,7 @@
 		E24D64A229E8FA2F00044D40 /* PaymentSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessView.swift; sourceTree = "<group>"; };
 		E2851D6E29F3913500C19636 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		E2A886CB29EA4C8500F04FAD /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		E2B2A8AC29F5FBDD00945ABD /* CameraHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHelper.swift; sourceTree = "<group>"; };
 		E2B3449F29EFB4EF00D9C06D /* AntiSpy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AntiSpy.entitlements; sourceTree = "<group>"; };
 		E2B4E43E29EE390D004D83A0 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		E2B4E44029EE3A67004D83A0 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			children = (
 				E2851D6E29F3913500C19636 /* LocationHelper.swift */,
 				E2BEFA6829F597B900866C5F /* BackgroundTaskService.swift */,
+				E2B2A8AC29F5FBDD00945ABD /* CameraHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				E2FD6AE629EED557006FAB8F /* SideMenuContainerView.swift in Sources */,
 				E2B4E44129EE3A67004D83A0 /* SideMenuView.swift in Sources */,
 				E2A886CC29EA4C8500F04FAD /* StartView.swift in Sources */,
+				E2B2A8AD29F5FBDD00945ABD /* CameraHelper.swift in Sources */,
 				E215998E29E6BECC000FA331 /* AntiSpyApp.swift in Sources */,
 				E202D66C29ED897D00CCF082 /* Activity.swift in Sources */,
 				E2B4E43F29EE390D004D83A0 /* SideMenu.swift in Sources */,
