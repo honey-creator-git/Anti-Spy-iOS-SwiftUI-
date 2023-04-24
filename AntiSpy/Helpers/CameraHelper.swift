@@ -14,7 +14,7 @@ func getAppsUsingCamera() -> [Activity] {
     let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera, .builtInTelephotoCamera, .builtInUltraWideCamera], mediaType: .video, position: .unspecified)
     
     for device in discoverySession.devices {
-        if let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String,
+        if let appName = Bundle.main.infoDictionary?["CFBundleName"] as? String,
             AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
             // Check if the device has an authorized status
             var iconName:String = ""
@@ -30,11 +30,11 @@ func getAppsUsingCamera() -> [Activity] {
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
             let dateString = formatter.string(from: currentDate)
-            formatter.dateFormat = "HH:mm:ss a"
+            formatter.dateFormat = "HH:mm:ss"
             let timeString = formatter.string(from: currentDate)
-            let slug = appName+dateString+timeString+"_camera"
+            let slug = appName+"_camera"
             appsUsingCamera.append(
-                Activity(startDate: dateString, startTime: timeString, name: appName, iconName: iconName, serviceName: "MicroPhoneIconImage", period: "", slug: slug)
+                Activity(startDate: dateString, startTime: timeString, name: appName, iconName: iconName, serviceName: "CameraWhiteIconImage", period: "", slug: slug)
             )
         }
     }

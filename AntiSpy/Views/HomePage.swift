@@ -13,6 +13,7 @@ struct HomePage: View {
     @State var isCamera = true
     @State var isMicrophone = false
     @State var isLocation = false
+    @State var startPageTab: Int? = nil
     var activities: [Activity] = [
         Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "WhatsApp", iconName: "WhatsAppLogoImage", serviceName: "CameraWhiteIconImage", period: "0:00:30"),
         Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Facebook", iconName: "FacebookLogoImage", serviceName: "LocationIconImage", period: "0:00:30"),
@@ -57,9 +58,9 @@ struct HomePage: View {
                         
                         GeometryReader { geo in
                             ZStack {
-                                if(activities.count > 0) {
+                                if(BackgroundTaskService.activities.count > 0) {
                                     ScrollView() {
-                                        ForEach(activities, id: \.self) {activity in
+                                        ForEach(BackgroundTaskService.activities, id: \.self) {activity in
                                             HStack() {
                                                 VStack() {
                                                     Text(activity.startDate)
@@ -110,19 +111,21 @@ struct HomePage: View {
                                             .font(.system(size: 18))
                                             .foregroundColor(Color("GrayColor"))
                                         
-                                        Button(action: {
-                                            
-                                        }) {
-                                            HStack() {
-                                                Text("Start Activity")
-                                                    .font(.system(size: 16))
-                                                    .foregroundColor(.white)
-                                                    .padding(.horizontal, 25)
-                                                    .padding(.vertical, 15)
-                                                    
+                                        NavigationLink(destination: StartView(), tag: 2, selection: $startPageTab) {
+                                            Button(action: {
+                                                self.startPageTab = 2
+                                            }) {
+                                                HStack() {
+                                                    Text("Start Activity")
+                                                        .font(.system(size: 16))
+                                                        .foregroundColor(.white)
+                                                        .padding(.horizontal, 25)
+                                                        .padding(.vertical, 15)
+                                                        
+                                                }
+                                                .background(LinearGradient(gradient: Gradient(colors: [Color("StartActivityButtonBackgroundColor"), Color("StartActivityButtonBackgroundColor")]), startPoint: .top, endPoint: .bottom))
+                                                .cornerRadius(50)
                                             }
-                                            .background(LinearGradient(gradient: Gradient(colors: [Color("StartActivityButtonBackgroundColor"), Color("StartActivityButtonBackgroundColor")]), startPoint: .top, endPoint: .bottom))
-                                            .cornerRadius(50)
                                         }
                                     }
                                     .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height / 2 + 130, alignment: .top)

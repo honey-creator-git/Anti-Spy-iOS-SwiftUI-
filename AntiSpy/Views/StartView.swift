@@ -23,7 +23,6 @@ struct StartView: View{
     init() {
         self.detectActivity = 0
         self.isCamera = true
-        print("Initialization!")
     }
     
     var body: some View {
@@ -50,10 +49,28 @@ struct StartView: View{
                             NavigationLink(destination: MainTabView(), tag: 4, selection: $mainTab) {
                                 Button(action: {
                                     if(detectActivity == 0) {
-                                        BackgroundTaskService.shared.scheduleBackgroundTask()
+                                        if(self.isCamera == true) {
+                                            BackgroundTaskService.isCamera = true
+                                            BackgroundTaskService.shared.scheduleBackgroundTask(serviceType: "camera")
+                                            print("Camera")
+                                        } else if(self.isMicrophone == true) {
+                                            BackgroundTaskService.isMicrophone = true
+                                            BackgroundTaskService.shared.scheduleBackgroundTask(serviceType: "microphone")
+                                            print("Microphone")
+                                        } else if(self.isLocation == true) {
+                                            BackgroundTaskService.isLocation = true
+                                            BackgroundTaskService.shared.scheduleBackgroundTask(serviceType: "location")
+                                            print("Location")
+                                        }
                                         self.detectActivity = 1
                                     } else if(self.detectActivity == 1){
-                                        BackgroundTaskService.shared.cancelBackgroundTask()
+                                        if(self.isCamera == true) {
+                                            BackgroundTaskService.shared.cancelBackgroundTask(serviceType: "camera")
+                                        } else if(self.isLocation == true) {
+                                            BackgroundTaskService.shared.cancelBackgroundTask(serviceType: "location")
+                                        } else if(self.isMicrophone == true) {
+                                            BackgroundTaskService.shared.cancelBackgroundTask(serviceType: "microphone")
+                                        }
                                         self.detectActivity = 0
                                         self.mainTab = 4
                                     }
@@ -148,8 +165,10 @@ struct StartView: View{
                                         if(self.isCamera == true) {
                                             self.isMicrophone = false
                                             self.isLocation = false
+                                            BackgroundTaskService.isCamera = self.isCamera
+                                            BackgroundTaskService.isMicrophone = false
+                                            BackgroundTaskService.isLocation = false
                                         }
-                                        BackgroundTaskService.isCamera = self.isCamera
                                     }) {
                                         if(self.isCamera == true) {
                                             Image("CameraIconImage")
@@ -164,8 +183,10 @@ struct StartView: View{
                                         if(self.isMicrophone == true) {
                                             self.isCamera = false
                                             self.isLocation = false
+                                            BackgroundTaskService.isMicrophone=self.isMicrophone
+                                            BackgroundTaskService.isCamera = false
+                                            BackgroundTaskService.isLocation = false
                                         }
-                                        BackgroundTaskService.isMicrophone=self.isMicrophone
                                     }) {
                                         if(self.isMicrophone == true) {
                                             Image("AudioLogoImage")
@@ -180,8 +201,10 @@ struct StartView: View{
                                         if(self.isLocation == true) {
                                             self.isMicrophone = false
                                             self.isCamera = false
+                                            BackgroundTaskService.isLocation=self.isLocation
+                                            BackgroundTaskService.isMicrophone = false
+                                            BackgroundTaskService.isCamera = false
                                         }
-                                        BackgroundTaskService.isLocation=self.isLocation
                                     }) {
                                         if(self.isLocation == true) {
                                             Image("LocationLogoImage")

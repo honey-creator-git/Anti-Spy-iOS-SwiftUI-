@@ -11,6 +11,7 @@ import SwiftUI
 struct RateView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @Binding var presentSideMenu: Bool
+    @State var startPageTab: Int? = nil
     var activities: [Activity] = [
         Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "WhatsApp", iconName: "WhatsAppLogoImage", serviceName: "CameraWhiteIconImage", period: "0:00:30"),
         Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Facebook", iconName: "FacebookLogoImage", serviceName: "LocationIconImage", period: "0:00:30"),
@@ -71,10 +72,10 @@ struct RateView: View {
 //                        .padding(.horizontal, 20)
                     }
                     
-                    if(activities.count > 0) {
+                    if(BackgroundTaskService.activities.count > 0) {
                         GeometryReader { geo in
                             ScrollView() {
-                                ForEach(activities, id: \.self) { activity in
+                                ForEach(BackgroundTaskService.activities, id: \.self) { activity in
                                     HStack() {
                                         VStack() {
                                             Text(activity.startDate)
@@ -118,21 +119,22 @@ struct RateView: View {
                                 .font(.system(size: 18))
                                 .foregroundColor(Color("GrayColor"))
                             
-                            
-                            Button(action: {
-                                
-                            }) {
-                                HStack() {
-                                    Text("Start Activity")
-                                        .font(.system(size: 16))
-                                        .foregroundColor(.white)
-                                        .padding(.horizontal, 25)
-                                        .padding(.vertical, 15)
-                                        
+                            NavigationLink(destination: StartView(), tag: 2, selection: $startPageTab) {
+                                Button(action: {
+                                    self.startPageTab = 2
+                                }) {
+                                    HStack() {
+                                        Text("Start Activity")
+                                            .font(.system(size: 16))
+                                            .foregroundColor(.white)
+                                            .padding(.horizontal, 25)
+                                            .padding(.vertical, 15)
+                                            
+                                    }
+                                    .background(LinearGradient(gradient: Gradient(colors: [Color("StartActivityButtonBackgroundColor"), Color("StartActivityButtonBackgroundColor")]), startPoint: .top, endPoint: .bottom))
+                                    .cornerRadius(50)
+                                    .padding(.top, 15)
                                 }
-                                .background(LinearGradient(gradient: Gradient(colors: [Color("StartActivityButtonBackgroundColor"), Color("StartActivityButtonBackgroundColor")]), startPoint: .top, endPoint: .bottom))
-                                .cornerRadius(50)
-                                .padding(.top, 15)
                             }
                         }
                         .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height - 150, alignment: .center)

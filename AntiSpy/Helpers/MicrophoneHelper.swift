@@ -25,7 +25,7 @@ func getAppsUsingMicrophone() -> [Activity] {
                     // Assume that any app with a port name that doesn't contain "iPhone Microphone" or "Headset Microphone"
                     // has requested microphone access
                     var iconName:String = ""
-                    let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? ""
+                    let appName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
                     if let iconsDict = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any],
                        let primaryIconsDict = iconsDict["CFBundlePrimaryIcon"] as? [String: Any],
                        let iconFiles = primaryIconsDict["CFBundleIconFiles"] as? [String],
@@ -38,9 +38,9 @@ func getAppsUsingMicrophone() -> [Activity] {
                     let formatter = DateFormatter()
                     formatter.dateFormat = "dd/MM/yyyy"
                     let dateString = formatter.string(from: currentDate)
-                    formatter.dateFormat = "HH:mm:ss a"
+                    formatter.dateFormat = "HH:mm:ss"
                     let timeString = formatter.string(from: currentDate)
-                    let slug = appName+dateString+timeString+"_microphone"
+                    let slug = appName+"_microphone"
                     appsUsingMicrophone.append(
                         Activity(startDate: dateString, startTime: timeString, name: appName, iconName: iconName, serviceName: "MicroPhoneIconImage", period: "", slug: slug)
                     )

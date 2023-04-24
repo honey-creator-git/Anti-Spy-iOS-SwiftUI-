@@ -567,7 +567,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AntiSpy/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "For AntiSpy";
+				INFOPLIST_KEY_CFBundleDisplayName = AntiSpy;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Fi;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = Fi;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Fi;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Splash Screen";
@@ -606,7 +609,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AntiSpy/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "For AntiSpy";
+				INFOPLIST_KEY_CFBundleDisplayName = AntiSpy;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Fi;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = Fi;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Fi;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Splash Screen";
