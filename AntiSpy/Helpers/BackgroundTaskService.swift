@@ -120,10 +120,17 @@ class BackgroundTaskService {
     }
     
     func processActivity(activities_: [Activity]){
+        for activity in BackgroundTaskService.activities {
+            if let app = activities_.first(where: {$0.slug==activity.slug}){
+            } else {
+                if let idx = BackgroundTaskService.activities.firstIndex(of: activity) {
+                    BackgroundTaskService.activities[idx].slug="#"
+                }
+            }
+        }
         activities_.forEach {
             activity in
             if var app = BackgroundTaskService.activities.first(where:{$0.slug == activity.slug}){
-                
                 /*
                  Duration
                 */
@@ -133,8 +140,8 @@ class BackgroundTaskService {
                 let startTime = formatter.date(from: app.startDate+" "+app.startTime)!
                 let endTime = formatter.date(from: activity.startDate+" "+activity.startTime)!
                 let calendar = Calendar.current
-                let components = calendar.dateComponents([.hour, .minute], from: startTime, to: endTime)
-                let duration = String(format: "%02d:%02d:%02d", components.hour!, components.minute!)
+                let components = calendar.dateComponents([.hour, .minute, .second], from: startTime, to: endTime)
+                let duration = String(format: "%02d:%02d:%02d", components.hour!, components.minute!, components.second!)
                 
                 if let idx = BackgroundTaskService.activities.firstIndex(of: app) {
                     app.period = duration

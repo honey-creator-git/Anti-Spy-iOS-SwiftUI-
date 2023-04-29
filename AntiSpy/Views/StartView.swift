@@ -12,8 +12,8 @@ struct StartView: View{
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State var mainTab: Int? = nil
     @State var deleteActity = false
-    @State var vibration = true
-    @State var notification = false
+    @State var vibration = false
+    @State var notification = true
     @State var detectActivity: Int = 0
     
     @State var isCamera = true

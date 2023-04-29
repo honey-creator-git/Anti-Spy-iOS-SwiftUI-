@@ -17,6 +17,8 @@
 		E21599AB29E6BF04000FA331 /* AntiSpyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21599AA29E6BF04000FA331 /* AntiSpyUITestsLaunchTests.swift */; };
 		E21599B829E6E773000FA331 /* Splash Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21599B729E6E773000FA331 /* Splash Screen.storyboard */; };
 		E238E77829E707FC00A2589F /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238E77729E707FC00A2589F /* SubscriptionView.swift */; };
+		E240A3BA29FD192100FD2047 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E240A3B929FD192100FD2047 /* PurchaseManager.swift */; };
+		E240A3BC29FD2DA700FD2047 /* EntitlementsManager .swift in Sources */ = {isa = PBXBuildFile; fileRef = E240A3BB29FD2DA700FD2047 /* EntitlementsManager .swift */; };
 		E24D64A329E8FA2F00044D40 /* PaymentSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D64A229E8FA2F00044D40 /* PaymentSuccessView.swift */; };
 		E25C981A29F627E2006A9853 /* VibrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25C981929F627E1006A9853 /* VibrationHelper.swift */; };
 		E25C981C29F627FA006A9853 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25C981B29F627FA006A9853 /* NotificationHelper.swift */; };
@@ -73,6 +75,9 @@
 		E21599AA29E6BF04000FA331 /* AntiSpyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E21599B729E6E773000FA331 /* Splash Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Splash Screen.storyboard"; sourceTree = "<group>"; };
 		E238E77729E707FC00A2589F /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		E240A3B929FD192100FD2047 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PurchaseManager.swift; path = ../../../../../PurchaseManager.swift; sourceTree = "<group>"; };
+		E240A3BB29FD2DA700FD2047 /* EntitlementsManager .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntitlementsManager .swift"; sourceTree = "<group>"; };
+		E240A3BD29FD532500FD2047 /* StoreConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreConfiguration.storekit; sourceTree = "<group>"; };
 		E24D64A229E8FA2F00044D40 /* PaymentSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessView.swift; sourceTree = "<group>"; };
 		E25C981929F627E1006A9853 /* VibrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationHelper.swift; sourceTree = "<group>"; };
 		E25C981B29F627FA006A9853 /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
@@ -172,6 +177,9 @@
 				E215999129E6BEFF000FA331 /* Assets.xcassets */,
 				E215999329E6BEFF000FA331 /* Preview Content */,
 				E21599B729E6E773000FA331 /* Splash Screen.storyboard */,
+				E240A3B929FD192100FD2047 /* PurchaseManager.swift */,
+				E240A3BD29FD532500FD2047 /* StoreConfiguration.storekit */,
+				E240A3BB29FD2DA700FD2047 /* EntitlementsManager .swift */,
 			);
 			path = AntiSpy;
 			sourceTree = "<group>";
@@ -375,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E240A3BC29FD2DA700FD2047 /* EntitlementsManager .swift in Sources */,
 				E2BEFA6929F597B900866C5F /* BackgroundTaskService.swift in Sources */,
 				E25C981F29F660E8006A9853 /* MicrophoneHelper.swift in Sources */,
 				E2C5E10529E888FC00545261 /* RedirectingWebView.swift in Sources */,
@@ -385,6 +394,7 @@
 				E2B4E44129EE3A67004D83A0 /* SideMenuView.swift in Sources */,
 				E2A886CC29EA4C8500F04FAD /* StartView.swift in Sources */,
 				E2B2A8AD29F5FBDD00945ABD /* CameraHelper.swift in Sources */,
+				E240A3BA29FD192100FD2047 /* PurchaseManager.swift in Sources */,
 				E215998E29E6BECC000FA331 /* AntiSpyApp.swift in Sources */,
 				E202D66C29ED897D00CCF082 /* Activity.swift in Sources */,
 				E2B4E43F29EE390D004D83A0 /* SideMenu.swift in Sources */,
@@ -568,14 +578,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AntiSpy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AntiSpy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Fi;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = Fi;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Fi;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Splash Screen";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -587,9 +599,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SwiftIOSAntiSpyApp;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -610,14 +625,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AntiSpy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AntiSpy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Fi;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = Fi;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Fi;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Splash Screen";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -629,9 +646,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SwiftIOSAntiSpyApp;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -647,9 +667,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ioscodev.AntiSpyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AntiSpy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AntiSpy";
 			};
 			name = Debug;
@@ -661,14 +684,18 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9J4F4CLX56;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ioscodev.AntiSpyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AntiSpy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AntiSpy";
 			};
 			name = Release;
@@ -683,9 +710,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ioscodev.AntiSpyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = AntiSpy;
 			};
 			name = Debug;
@@ -700,9 +730,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ioscodev.AntiSpyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = AntiSpy;
 			};
 			name = Release;

@@ -4,5 +4,10 @@
 <dict>
 	<key>CFBundleIconFile</key>
 	<string>AppIcon</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>INSendMessageIntent</string>
+		<string>INStartCallIntent</string>
+	</array>
 </dict>
 </plist>

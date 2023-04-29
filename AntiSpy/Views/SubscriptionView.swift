@@ -10,6 +10,13 @@ import SwiftUI
 
 struct SubscriptionView: View {
     @State var paymentSucessTab: Int? = nil
+    
+    @EnvironmentObject
+    private var entitlementManager: EntitlementManager
+    
+    @EnvironmentObject
+    private var purchaseManager: PurchaseManager
+    
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
@@ -29,50 +36,36 @@ struct SubscriptionView: View {
 
                                 ZStack() {
                                     HStack(spacing: 30.0) {
-                                        Button(action: {
+                                        ForEach(purchaseManager.products) { (product) in
+                                            Button(action:{
+                                                Task{
+                                                    do {
+                                                        try await purchaseManager.purchase(product)
+                                                    } catch {
+                                                        print(error)
+                                                    }
+                                                }
+                                            }) {
+                                                
+                                                VStack(spacing: 10.0) {
+                                                    Text("\(product.displayName)")
+                                                        .font(.system(size: 28))
+                                                        .foregroundColor(.white)
+                                                        .multilineTextAlignment(.center)
 
-                                        }) {
-                                            VStack(spacing: 10.0) {
-                                                Text("Basic")
-                                                    .font(.system(size: 28))
-                                                    .foregroundColor(.white)
-                                                    .multilineTextAlignment(.center)
-
-                                                Text("$9.99/month")
-                                                    .font(.system(size: 16))
-                                                    .foregroundColor(.white)
+                                                    Text("\(product.displayPrice)")
+                                                        .font(.system(size: 16))
+                                                        .foregroundColor(.white)
+                                                }
+                                                .padding(.horizontal, 10)
+                                                .padding(.vertical, 20)
+                                                .frame(maxWidth: UIScreen.main.bounds.width / 2 - 50, maxHeight: UIScreen.main.bounds.width / 2 - 50)
+                                                .background(
+                                                    LinearGradient(gradient: Gradient(colors: [Color("SubscriptionPlanBackgroundColor1"), Color("SubscriptionPlanBackgroundColor2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                                                )
+                                                .cornerRadius(20)
+                                                .shadow(color: Color("SubscriptionPlanBackgroundColor1"), radius: 20, x: 0, y: 0)
                                             }
-                                            .padding(.horizontal, 10)
-                                            .padding(.vertical, 20)
-                                            .frame(maxWidth: UIScreen.main.bounds.width / 2 - 50, maxHeight: UIScreen.main.bounds.width / 2 - 50)
-                                            .background(
-                                                LinearGradient(gradient: Gradient(colors: [Color("SubscriptionPlanBackgroundColor1"), Color("SubscriptionPlanBackgroundColor2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                                            )
-                                            .cornerRadius(20)
-                                            .shadow(color: Color("SubscriptionPlanBackgroundColor1"), radius: 20, x: 0, y: 0)
-                                        }
-
-                                        Button(action: {
-
-                                        }) {
-                                            VStack(spacing: 10.0) {
-                                                Text("Premium")
-                                                    .font(.system(size: 28))
-                                                    .foregroundColor(.white)
-                                                    .multilineTextAlignment(.center)
-
-                                                Text("$99.99/year*")
-                                                    .font(.system(size: 16))
-                                                    .foregroundColor(.white)
-                                            }
-                                            .padding(.horizontal, 10)
-                                            .padding(.vertical, 20)
-                                            .frame(maxWidth: UIScreen.main.bounds.width / 2 - 50, maxHeight: UIScreen.main.bounds.width / 2 - 50)
-                                            .background(
-                                                LinearGradient(gradient: Gradient(colors: [Color("SubscriptionPlanBackgroundColor1"), Color("SubscriptionPlanBackgroundColor2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                                            )
-                                            .cornerRadius(20)
-                                            .shadow(color: Color("SubscriptionPlanBackgroundColor1"), radius: 20, x: 0, y: 0)
                                         }
                                     }
                                     .padding(.horizontal, 20)
@@ -129,23 +122,26 @@ struct SubscriptionView: View {
                                 }
                                 .padding(.top, 10)
                                 .frame(maxWidth: UIScreen.main.bounds.width - 80, alignment: .center)
-
-                            NavigationLink(destination: PaymentSuccessView().navigationBarBackButtonHidden(true), tag: 1, selection: $paymentSucessTab) {
-                                Button(action: {
-                                    self.paymentSucessTab = 1
-                                }) {
-                                    HStack() {
-                                        VStack() {
-                                            Text("Continue")
-                                                .font(.system(size: 16))
-                                                .foregroundColor(.white)
+                            if purchaseManager.hasUnlockedPro {
+                                NavigationLink(destination: PaymentSuccessView().navigationBarBackButtonHidden(true), tag: 1, selection: $paymentSucessTab) {
+                                    
+                                    Button(action: {
+                                        self.paymentSucessTab = 1
+                                    }) {
+                                        HStack() {
+                                            VStack() {
+                                                
+                                                Text("Continue")
+                                                    .font(.system(size: 16))
+                                                    .foregroundColor(.white)
+                                            }
+                                            .padding(.vertical, 15)
+                                            .frame(maxWidth: UIScreen.main.bounds.width - 50)
+                                            .background(Color("SaveBackgroundColor"))
+                                            .cornerRadius(50)
                                         }
-                                        .padding(.vertical, 15)
-                                        .frame(maxWidth: UIScreen.main.bounds.width - 50)
-                                        .background(Color("SaveBackgroundColor"))
-                                        .cornerRadius(50)
+                                        .padding(.top, 30)
                                     }
-                                    .padding(.top, 30)
                                 }
                             }
                         }
