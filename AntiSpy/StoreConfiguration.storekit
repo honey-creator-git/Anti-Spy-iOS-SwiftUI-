@@ -27,7 +27,7 @@
           "displayPrice" : "9.9",
           "familyShareable" : false,
           "groupNumber" : 1,
-          "internalID" : "18EA5BF1",
+          "internalID" : "352E1CA8",
           "introductoryOffer" : null,
           "localizations" : [
             {
@@ -38,7 +38,7 @@
           ],
           "productID" : "com.antispy.month",
           "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Monthly Plan",
+          "referenceName" : "Basic Plan",
           "subscriptionGroupID" : "0C9217F2",
           "type" : "RecurringSubscription"
         },
@@ -52,12 +52,8 @@
           "displayPrice" : "99",
           "familyShareable" : false,
           "groupNumber" : 1,
-          "internalID" : "352E1CA8",
-          "introductoryOffer" : {
-            "displayPrice" : "0.99",
-            "internalID" : "6D61F140",
-            "paymentMode" : "none"
-          },
+          "internalID" : "3BA67A0F",
+          "introductoryOffer" : null,
           "localizations" : [
             {
               "description" : "Yearly Subscription",

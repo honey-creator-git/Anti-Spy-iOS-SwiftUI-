@@ -7,11 +7,13 @@
 
 import Foundation
 import SwiftUI
+import StoreKit
 
 struct CancelSubscriptionView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @Binding var presentSideMenu: Bool
-    
+    @EnvironmentObject
+    private var purchaseManager: PurchaseManager
     var body: some View {
         GeometryReader { geometry in
             ZStack() {
@@ -38,8 +40,9 @@ struct CancelSubscriptionView: View {
                                 .foregroundColor(.white)
                             
                             Button(action: {
-                                
+                                self.purchaseManager.cancelSubscription()
                             }) {
+                                
                                 HStack() {
                                     Text("Yes")
                                         .font(.system(size: 16))

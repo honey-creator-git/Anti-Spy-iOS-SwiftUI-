@@ -14,15 +14,9 @@ struct ContentView: View {
     
     @EnvironmentObject
     private var purchaseManager: PurchaseManager
+    
     var body: some View {
         SubscriptionView()
-            .task {
-                do {
-                    try await purchaseManager.loadProducts()
-                } catch {
-                    print(error)
-                }
-        }
     }
 }
 

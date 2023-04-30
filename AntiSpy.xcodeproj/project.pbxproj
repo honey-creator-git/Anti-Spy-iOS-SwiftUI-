@@ -17,8 +17,8 @@
 		E21599AB29E6BF04000FA331 /* AntiSpyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21599AA29E6BF04000FA331 /* AntiSpyUITestsLaunchTests.swift */; };
 		E21599B829E6E773000FA331 /* Splash Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21599B729E6E773000FA331 /* Splash Screen.storyboard */; };
 		E238E77829E707FC00A2589F /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238E77729E707FC00A2589F /* SubscriptionView.swift */; };
-		E240A3BA29FD192100FD2047 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E240A3B929FD192100FD2047 /* PurchaseManager.swift */; };
 		E240A3BC29FD2DA700FD2047 /* EntitlementsManager .swift in Sources */ = {isa = PBXBuildFile; fileRef = E240A3BB29FD2DA700FD2047 /* EntitlementsManager .swift */; };
+		E240A3BF29FDCADC00FD2047 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E240A3BE29FDCADC00FD2047 /* PurchaseManager.swift */; };
 		E24D64A329E8FA2F00044D40 /* PaymentSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D64A229E8FA2F00044D40 /* PaymentSuccessView.swift */; };
 		E25C981A29F627E2006A9853 /* VibrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25C981929F627E1006A9853 /* VibrationHelper.swift */; };
 		E25C981C29F627FA006A9853 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25C981B29F627FA006A9853 /* NotificationHelper.swift */; };
@@ -75,9 +75,9 @@
 		E21599AA29E6BF04000FA331 /* AntiSpyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E21599B729E6E773000FA331 /* Splash Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Splash Screen.storyboard"; sourceTree = "<group>"; };
 		E238E77729E707FC00A2589F /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
-		E240A3B929FD192100FD2047 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PurchaseManager.swift; path = ../../../../../PurchaseManager.swift; sourceTree = "<group>"; };
 		E240A3BB29FD2DA700FD2047 /* EntitlementsManager .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntitlementsManager .swift"; sourceTree = "<group>"; };
 		E240A3BD29FD532500FD2047 /* StoreConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreConfiguration.storekit; sourceTree = "<group>"; };
+		E240A3BE29FDCADC00FD2047 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		E24D64A229E8FA2F00044D40 /* PaymentSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessView.swift; sourceTree = "<group>"; };
 		E25C981929F627E1006A9853 /* VibrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationHelper.swift; sourceTree = "<group>"; };
 		E25C981B29F627FA006A9853 /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
@@ -177,9 +177,9 @@
 				E215999129E6BEFF000FA331 /* Assets.xcassets */,
 				E215999329E6BEFF000FA331 /* Preview Content */,
 				E21599B729E6E773000FA331 /* Splash Screen.storyboard */,
-				E240A3B929FD192100FD2047 /* PurchaseManager.swift */,
 				E240A3BD29FD532500FD2047 /* StoreConfiguration.storekit */,
 				E240A3BB29FD2DA700FD2047 /* EntitlementsManager .swift */,
+				E240A3BE29FDCADC00FD2047 /* PurchaseManager.swift */,
 			);
 			path = AntiSpy;
 			sourceTree = "<group>";
@@ -394,7 +394,6 @@
 				E2B4E44129EE3A67004D83A0 /* SideMenuView.swift in Sources */,
 				E2A886CC29EA4C8500F04FAD /* StartView.swift in Sources */,
 				E2B2A8AD29F5FBDD00945ABD /* CameraHelper.swift in Sources */,
-				E240A3BA29FD192100FD2047 /* PurchaseManager.swift in Sources */,
 				E215998E29E6BECC000FA331 /* AntiSpyApp.swift in Sources */,
 				E202D66C29ED897D00CCF082 /* Activity.swift in Sources */,
 				E2B4E43F29EE390D004D83A0 /* SideMenu.swift in Sources */,
@@ -406,6 +405,7 @@
 				E2FD6ADC29EEC560006FAB8F /* ShareView.swift in Sources */,
 				E2FD6AE029EEC6D7006FAB8F /* PrivacyPolicyView.swift in Sources */,
 				E2D006D529F038660089571F /* SubscriptioinManager.swift in Sources */,
+				E240A3BF29FDCADC00FD2047 /* PurchaseManager.swift in Sources */,
 				E2FD6ADE29EEC607006FAB8F /* RateView.swift in Sources */,
 				E2FD6AD629EEC3EF006FAB8F /* TabView.swift in Sources */,
 				E2FD6AE229EEC7B0006FAB8F /* CancelSubscriptionView.swift in Sources */,
