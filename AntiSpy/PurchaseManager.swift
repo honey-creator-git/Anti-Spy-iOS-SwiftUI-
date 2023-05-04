@@ -67,7 +67,7 @@ class PurchaseManager: NSObject, ObservableObject {
     }
     
     var hasUnlockedPro: Bool {
-       return !self.purchasedProductIDs.isEmpty
+        return !self.purchasedProductIDs.isEmpty
     }
     
     var purchasedProductIDName: String {

@@ -58,9 +58,9 @@ struct HomePage: View {
                         
                         GeometryReader { geo in
                             ZStack {
-                                if(BackgroundTaskService.activities.count > 0) {
+                                if(self.activities.count > 0) {
                                     ScrollView() {
-                                        ForEach(BackgroundTaskService.activities, id: \.self) {activity in
+                                        ForEach(self.activities, id: \.self) {activity in
                                             HStack() {
                                                 VStack() {
                                                     Text(activity.startDate)

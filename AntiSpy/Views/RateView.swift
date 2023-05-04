@@ -12,7 +12,8 @@ struct RateView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @Binding var presentSideMenu: Bool
     @State var startPageTab: Int? = nil
-    var activities: [Activity] = [
+    var activities : [Activity] = DatabaseHelper.shared.getAll()
+    var activities_: [Activity] = [
         Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "WhatsApp", iconName: "WhatsAppLogoImage", serviceName: "CameraWhiteIconImage", period: "0:00:30"),
         Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Facebook", iconName: "FacebookLogoImage", serviceName: "LocationIconImage", period: "0:00:30"),
         Activity(startDate: "25/11/2022", startTime: "10:03PM", name: "Call", iconName: "CallLogoImage", serviceName: "MicroPhoneIconImage", period: "0:00:30"),
@@ -72,10 +73,10 @@ struct RateView: View {
 //                        .padding(.horizontal, 20)
                     }
                     
-                    if(BackgroundTaskService.activities.count > 0) {
+                    if(self.activities.count > 0) {
                         GeometryReader { geo in
                             ScrollView() {
-                                ForEach(BackgroundTaskService.activities, id: \.self) { activity in
+                                ForEach(self.activities, id: \.self) { activity in
                                     HStack() {
                                         VStack() {
                                             Text(activity.startDate)
