@@ -30,6 +30,8 @@ struct AntiSpyApp: App {
                 .environmentObject(purchaseManager)
                 .task {
                     await purchaseManager.updatePurchasedProducts()
+                    DatabaseHelper.shared.openDatabase()
+                    DatabaseHelper.shared.initDatabase()
                 }
         }
     }

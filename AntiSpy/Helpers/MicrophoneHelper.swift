@@ -8,8 +8,7 @@
 import Foundation
 import AVFoundation
 
-func getAppsUsingMicrophone() -> [Activity] {
-    var appsUsingMicrophone = [Activity]()
+func getAppsUsingMicrophone() {
     
     let session = AVAudioSession.sharedInstance()
     let currentRoute = session.currentRoute
@@ -34,21 +33,10 @@ func getAppsUsingMicrophone() -> [Activity] {
         //                   let iconImage = UIImage(named: lastIcon)
                            // do something with the icon image...
                     }
-                    let currentDate = Date()
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "dd/MM/yyyy"
-                    let dateString = formatter.string(from: currentDate)
-                    formatter.dateFormat = "HH:mm:ss"
-                    let timeString = formatter.string(from: currentDate)
-                    let slug = appName+"_microphone"
-                    appsUsingMicrophone.append(
-                        Activity(startDate: dateString, startTime: timeString, name: appName, iconName: iconName, serviceName: "MicroPhoneIconImage", period: "", slug: slug)
-                    )
-                    
+                    DatabaseHelper.shared.doWork(activity: Activity(startDate: "", startTime: "", name: appName, iconName: iconName, serviceName: "MicroPhoneIconImage", period: ""))
+                
                 }
             }
         }
     }
-    
-    return appsUsingMicrophone
 }

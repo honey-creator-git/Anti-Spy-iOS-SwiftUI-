@@ -8,12 +8,11 @@
 import Foundation
 import AVFoundation
 
-func getAppsUsingCamera() -> [Activity] {
-    var appsUsingCamera = [Activity]()
+func getAppsUsingCamera() {
     
     let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera, .builtInTelephotoCamera, .builtInUltraWideCamera], mediaType: .video, position: .unspecified)
     
-    for device in discoverySession.devices {
+    for _ in discoverySession.devices {
         if let appName = Bundle.main.infoDictionary?["CFBundleName"] as? String,
             AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
             // Check if the device has an authorized status
@@ -26,18 +25,9 @@ func getAppsUsingCamera() -> [Activity] {
 //                   let iconImage = UIImage(named: lastIcon)
                    // do something with the icon image...
             }
-            let currentDate = Date()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
-            let dateString = formatter.string(from: currentDate)
-            formatter.dateFormat = "HH:mm:ss"
-            let timeString = formatter.string(from: currentDate)
-            let slug = appName+"_camera"
-            appsUsingCamera.append(
-                Activity(startDate: dateString, startTime: timeString, name: appName, iconName: iconName, serviceName: "CameraWhiteIconImage", period: "", slug: slug)
-            )
+            DatabaseHelper.shared.doWork(activity: Activity(startDate: "", startTime: "", name: appName, iconName: iconName, serviceName: "CameraWhiteIconImage", period: ""))
+            
         }
     }
     
-    return appsUsingCamera
 }

@@ -15,10 +15,10 @@ class BackgroundTaskService {
     static var isCamera = true
     static var isMicrophone = false
     static var isLocation = false
-    static var activities: [Activity] = []
     static var enNotification = false
     static var enVibration = false
     static var enFilter = false
+    var filter = false;
     var timer: Timer?
     var backgroundTask: UIBackgroundTaskIdentifier = .invalid
     
@@ -37,27 +37,34 @@ class BackgroundTaskService {
         timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
 
             // Handle your background task logic here
-            var apps:[Activity] = []
+        
             if(BackgroundTaskService.isLocation) {
-                apps = apps + getAppsUsingLocation()
+                getAppsUsingLocation()
                 print("Background Task is running for location.")
             }
             
             if(BackgroundTaskService.isCamera) {
-                apps = apps + getAppsUsingCamera()
+                getAppsUsingCamera()
                 print("Background Task is running for camera.")
             }
             
             if(BackgroundTaskService.isMicrophone) {
-                apps = apps + getAppsUsingMicrophone()
+                getAppsUsingMicrophone()
                 print("Backgound Task is running for microphone.")
             }
-            
-            self.processActivity(activities_: apps)
-            
+                        
             if(BackgroundTaskService.enFilter == true){
-                self.filterActivity()
-                print("Delete Activities after 2 days has been enabled.")
+                if(BackgroundTaskService.enFilter != self.filter){
+                    self.filter = true
+                    DatabaseHelper.shared.flush(en: true)
+                    print("Delete Activities after 2 days has been enabled.")
+                }
+            } else {
+                if(BackgroundTaskService.enFilter != self.filter){
+                    self.filter = false
+                    DatabaseHelper.shared.flush(en: false)
+                    print("Delete Activities after 2 days has been disabled.")
+                }
             }
         }
         RunLoop.current.add(timer!, forMode: .default)
@@ -76,90 +83,17 @@ class BackgroundTaskService {
             backgroundTask = .invalid
             print("Background task stopped")
             switch(serviceType) {
-                case "camera":
-                    BackgroundTaskService.isCamera = false
-                    return
-                case "microphone":
-                    BackgroundTaskService.isMicrophone = false
-                    return
-                case "location":
-                    BackgroundTaskService.isLocation = false
-                    return
-                default:
-                    return
-            }
-        }
-    }
-    
-    func filterActivity(){
-        let filtered = BackgroundTaskService.activities.filter{
-            getDurationByDate(from: $0.startDate+" "+$0.startTime, duration: $0.period)
-        }
-        BackgroundTaskService.activities = filtered
-    }
-    
-    func getDurationByDate(from: String, duration: String) -> Bool{
-        let formatter = DateFormatter()
-        let calendar = Calendar.current
-        formatter.dateFormat = "dd/MM h"
-        var durationComponents = DateComponents()
-        if let durationDate = formatter.date(from: duration) {
-            durationComponents = calendar.dateComponents([.day, .hour], from: durationDate)
-        }
-        
-        let currentDate = Date()
-        let startTime = calendar.date(byAdding: durationComponents, to: formatter.date(from: from)!)
-        
-        let components = calendar.dateComponents([.month, .day], from: startTime!, to: currentDate)
-        
-        let durationMonth = components.month as Int? ?? 0
-        let durationDay = components.day as Int? ?? 0
-        
-        let isOld = durationDay + durationMonth < 2
-        return isOld
-    }
-    
-    func processActivity(activities_: [Activity]){
-        for activity in BackgroundTaskService.activities {
-            if let app = activities_.first(where: {$0.slug==activity.slug}){
-            } else {
-                if let idx = BackgroundTaskService.activities.firstIndex(of: activity) {
-                    BackgroundTaskService.activities[idx].slug="#"
-                }
-            }
-        }
-        activities_.forEach {
-            activity in
-            if var app = BackgroundTaskService.activities.first(where:{$0.slug == activity.slug}){
-                /*
-                 Duration
-                */
-                let formatter = DateFormatter()
-                formatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-                
-                let startTime = formatter.date(from: app.startDate+" "+app.startTime)!
-                let endTime = formatter.date(from: activity.startDate+" "+activity.startTime)!
-                let calendar = Calendar.current
-                let components = calendar.dateComponents([.hour, .minute, .second], from: startTime, to: endTime)
-                let duration = String(format: "%02d:%02d:%02d", components.hour!, components.minute!, components.second!)
-                
-                if let idx = BackgroundTaskService.activities.firstIndex(of: app) {
-                    app.period = duration
-                    BackgroundTaskService.activities[idx] = app
-                }
-                
-            } else {
-                BackgroundTaskService.activities.append(activity)
-                if(BackgroundTaskService.enVibration == true)
-                {
-                    makeVibration()
-                    print("Vibration has been enabled.")
-                }
-                if(BackgroundTaskService.enNotification == true)
-                {
-                    makeNotification(title: "Location Alert", body: activity.name+" accessed the location")
-                    print("Notification has been enabled.")
-                }
+            case "camera":
+                BackgroundTaskService.isCamera = false
+                return
+            case "microphone":
+                BackgroundTaskService.isMicrophone = false
+                return
+            case "location":
+                BackgroundTaskService.isLocation = false
+                return
+            default:
+                return
             }
         }
     }

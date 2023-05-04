@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import UserNotifications
 
-func makeNotification(title: String, body: String) {
+func makeNotification(title: String, body: String, identifier: String) {
     // Request permission to display notifications
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
         if let error = error {
@@ -20,31 +20,23 @@ func makeNotification(title: String, body: String) {
         if granted {
             // Register the app for remote notifications
             DispatchQueue.main.async {
+                
                 UIApplication.shared.registerForRemoteNotifications()
+                
             }
+            
+            print("Hi")
+            let content = UNMutableNotificationContent()
+            content.title = title
+            content.body = body
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            
+            let req = UNNotificationRequest(identifier: "Notification#"+identifier, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(req, withCompletionHandler: nil)
         }
     }
 
-    // Create a notification content object
-    let content = UNMutableNotificationContent()
-    content.title = title
-    content.body = body
-    content.sound = UNNotificationSound.default
-
-    // Create a trigger for the notification (in this case, trigger it after 5 seconds)
-    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-
-    // Create a request for the notification
-    let request = UNNotificationRequest(identifier: "my_notification", content: content, trigger: trigger)
-
-    // Add the request to the notification center
-    UNUserNotificationCenter.current().add(request) { error in
-        if let error = error {
-            // Handle the error
-            print("Error adding notification request: \(error.localizedDescription)")
-        } else {
-            // Notification was successfully scheduled
-            print("Notification scheduled!")
-        }
-    }
+   
 }

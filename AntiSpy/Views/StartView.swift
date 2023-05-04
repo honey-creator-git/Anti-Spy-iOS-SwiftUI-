@@ -236,6 +236,14 @@ struct StartView: View{
                     LinearGradient(gradient: Gradient(colors: [Color("StartPageBackgroundColor"), Color("StartPageBackgroundColor")]), startPoint: .top, endPoint: .bottom)
                 )
                 .ignoresSafeArea(edges: .vertical)
+                .onAppear(){
+                    BackgroundTaskService.isCamera=self.isCamera
+                    BackgroundTaskService.isMicrophone=self.isMicrophone
+                    BackgroundTaskService.isLocation=self.isLocation
+                    
+                    BackgroundTaskService.enNotification=self.notification
+                    BackgroundTaskService.enVibration=self.vibration
+                }
             }
         }
     }

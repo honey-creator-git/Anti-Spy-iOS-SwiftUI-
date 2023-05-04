@@ -10,8 +10,7 @@ import CoreLocation
 import UIKit
 import SwiftUI
 
-func getAppsUsingLocation() -> [Activity] {
-    var appsUsingLocation = [Activity]()
+func getAppsUsingLocation() {
     
     let locationManager = CLLocationManager()
     locationManager.requestWhenInUseAuthorization()
@@ -25,19 +24,11 @@ func getAppsUsingLocation() -> [Activity] {
             let appName = app.object(forInfoDictionaryKey: "CFBundleName") as? String ?? ""
             
             let iconName = app.object(forInfoDictionaryKey: "CFBundleIconFile") as? String ?? ""
-            let currentDate = Date()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
-            let dateString = formatter.string(from: currentDate)
-            formatter.dateFormat = "HH:mm:ss"
-            let timeString = formatter.string(from: currentDate)
-            let slug = appName+"_location"
-            appsUsingLocation.append(
-                Activity(startDate: dateString, startTime: timeString, name: appName, iconName: iconName, serviceName: "LocationIconImage", period: "", slug: slug)
-            )
+            
+            DatabaseHelper.shared.doWork(activity: Activity(startDate: "", startTime: "", name: appName, iconName: iconName, serviceName: "LocationIconImage", period: ""))
+            
         }
 
     }
     
-    return appsUsingLocation
 }
