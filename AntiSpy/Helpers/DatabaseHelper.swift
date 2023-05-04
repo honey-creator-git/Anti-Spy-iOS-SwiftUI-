@@ -117,7 +117,12 @@ class DatabaseHelper{
         var queryStatement: OpaquePointer?
         	
         if(sqlite3_prepare(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK) {
+<<<<<<< HEAD
             
+=======
+            print(activity.name)
+            print(activity.serviceName)
+>>>>>>> 831ff6137ed9970153540377b9144ffa86ab3d46
             sqlite3_bind_text(queryStatement, 1, NSString(string: activity.name).utf8String, -1, nil)
             sqlite3_bind_text(queryStatement, 2, NSString(string: activity.serviceName).utf8String, -1, nil)
             // Execute the statement
@@ -135,7 +140,11 @@ class DatabaseHelper{
                 }
                 if(BackgroundTaskService.enNotification == true)
                 {
+<<<<<<< HEAD
                     makeNotification(title: "Secure alert", body: activity.name+" accessed the location", identifier: activity.name+activity.serviceName)
+=======
+                    makeNotification(title: "Secure alert", body: activity.name+" accessed the location")
+>>>>>>> 831ff6137ed9970153540377b9144ffa86ab3d46
                     print("Notification has been enabled.")
                 }
             }
