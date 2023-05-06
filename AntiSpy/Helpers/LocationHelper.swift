@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //
 //  LocationHelper.swift
 //  MyApplication
@@ -33,39 +32,37 @@ func getAppsUsingLocation() {
     }
     
 }
-=======
-//
-//  LocationHelper.swift
-//  MyApplication
-//
-//  Created by Rome on 4/13/23.
-//
+// //
+// //  LocationHelper.swift
+// //  MyApplication
+// //
+// //  Created by Rome on 4/13/23.
+// //
 
-import Foundation
-import CoreLocation
-import UIKit
-import SwiftUI
+// import Foundation
+// import CoreLocation
+// import UIKit
+// import SwiftUI
 
-func getAppsUsingLocation() {
+// func getAppsUsingLocation() {
     
-    let locationManager = CLLocationManager()
-    locationManager.requestWhenInUseAuthorization()
+//     let locationManager = CLLocationManager()
+//     locationManager.requestWhenInUseAuthorization()
   
-    for app in Bundle.allBundles {
+//     for app in Bundle.allBundles {
 
-        let hasLocationAlwaysUsageDescription = app.object(forInfoDictionaryKey: "NSLocationAlwaysUsageDescription") != nil
-        let hasLocationWhenInUseUsageDescription = app.object(forInfoDictionaryKey: "NSLocationWhenInUseUsageDescription") != nil
+//         let hasLocationAlwaysUsageDescription = app.object(forInfoDictionaryKey: "NSLocationAlwaysUsageDescription") != nil
+//         let hasLocationWhenInUseUsageDescription = app.object(forInfoDictionaryKey: "NSLocationWhenInUseUsageDescription") != nil
         
-        if hasLocationAlwaysUsageDescription || hasLocationWhenInUseUsageDescription {
-            let appName = app.object(forInfoDictionaryKey: "CFBundleName") as? String ?? ""
+//         if hasLocationAlwaysUsageDescription || hasLocationWhenInUseUsageDescription {
+//             let appName = app.object(forInfoDictionaryKey: "CFBundleName") as? String ?? ""
             
-            let iconName = app.object(forInfoDictionaryKey: "CFBundleIconFile") as? String ?? ""
+//             let iconName = app.object(forInfoDictionaryKey: "CFBundleIconFile") as? String ?? ""
             
-            DatabaseHelper.shared.doWork(activity: Activity(startDate: "", startTime: "", name: appName, iconName: iconName, serviceName: "LocationIconImage", period: ""))
+//             DatabaseHelper.shared.doWork(activity: Activity(startDate: "", startTime: "", name: appName, iconName: iconName, serviceName: "LocationIconImage", period: ""))
             
-        }
+//         }
 
-    }
+//     }
     
-}
->>>>>>> 831ff6137ed9970153540377b9144ffa86ab3d46
+// }
