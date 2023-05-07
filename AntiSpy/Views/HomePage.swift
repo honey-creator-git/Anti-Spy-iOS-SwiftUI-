@@ -63,36 +63,38 @@ struct HomePage: View {
                                 if(self.activities.count > 0) {
                                     ScrollView() {
                                         ForEach(self.activities, id: \.self) {activity in
-                                            HStack() {
-                                                VStack() {
-                                                    Text(activity.startDate)
-                                                        .font(.system(size: 14))
-                                                        .foregroundColor(Color("GrayColor"))
-                                                    Text(activity.startTime)
-                                                        .font(.system(size: 14))
+                                            if((self.isCamera == true && activity.serviceName == "CameraWhiteIconImage") || (self.isMicrophone == true && activity.serviceName == "MicroPhoneIconImage") || (self.isLocation == true && activity.serviceName == "LocationIconImage")) {
+                                                HStack() {
+                                                    VStack() {
+                                                        Text(activity.startDate)
+                                                            .font(.system(size: 14))
+                                                            .foregroundColor(Color("GrayColor"))
+                                                        Text(activity.startTime)
+                                                            .font(.system(size: 14))
+                                                            .foregroundColor(Color("GrayColor"))
+                                                    }
+                                                    Spacer()
+                                                    Image(activity.iconName)
+                                                    Spacer()
+                                                    Text(activity.name)
+                                                        .font(.system(size: 16))
+                                                        .foregroundColor(.white)
+                                                    Spacer()
+                                                    Image(activity.serviceName)
+                                                    Spacer()
+                                                    Text(activity.period)
+                                                        .font(.system(size: 12))
                                                         .foregroundColor(Color("GrayColor"))
                                                 }
-                                                Spacer()
-                                                Image(activity.iconName)
-                                                Spacer()
-                                                Text(activity.name)
-                                                    .font(.system(size: 16))
-                                                    .foregroundColor(.white)
-                                                Spacer()
-                                                Image(activity.serviceName)
-                                                Spacer()
-                                                Text(activity.period)
-                                                    .font(.system(size: 12))
-                                                    .foregroundColor(Color("GrayColor"))
-                                            }
-                                            .frame(maxWidth: geo.size.width, alignment: .leading)
-                                            .padding(.horizontal, 20)
-
-                                            Divider()
-                                                .frame(height: 2)
-                                                .overlay(Color("DividerBackgroundColor"))
+                                                .frame(maxWidth: geo.size.width, alignment: .leading)
                                                 .padding(.horizontal, 20)
-                                                .padding(.vertical, 10)
+                                                
+                                                Divider()
+                                                    .frame(height: 2)
+                                                    .overlay(Color("DividerBackgroundColor"))
+                                                    .padding(.horizontal, 20)
+                                                    .padding(.vertical, 10)
+                                            }
                                         }
                                     }
                                     .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height / 2 + 150, alignment: .top)

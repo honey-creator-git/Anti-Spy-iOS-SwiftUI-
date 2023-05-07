@@ -105,6 +105,21 @@ struct SubscriptionView: View {
                                 
                                 VStack(spacing: 10.0) {
                                     HStack(spacing: 20.0) {
+                                        Button{
+                                            Task{
+                                                do {
+                                                    try await AppStore.sync()
+                                                } catch {
+                                                    print(error)
+                                                }
+                                            }
+                                        } label: {
+                                            Text("Restore Purchases")
+                                        }
+                                    }
+                                    .frame(maxWidth: UIScreen.main.bounds.width - 100, maxHeight: 40, alignment: .center)
+                                    
+                                    HStack(spacing: 20.0) {
                                         Image("SubscriptionCheckIcon")
                                         
                                         Text("We block large companies from blocking you")
@@ -130,6 +145,8 @@ struct SubscriptionView: View {
                                             .foregroundColor(.white)
                                     }
                                     .frame(maxWidth: UIScreen.main.bounds.width - 100, maxHeight: 40, alignment: .topLeading)
+                                    
+                                    
                                 }
                                 .padding(.top, 10)
                                 .frame(maxWidth: UIScreen.main.bounds.width - 80, alignment: .center)

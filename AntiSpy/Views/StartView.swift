@@ -11,6 +11,7 @@ struct StartView: View{
     @State private var appsRunningWithLocation: [String] = []
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State var mainTab: Int? = nil
+    @State var subscriptionTab: Int? = nil
     @State var deleteActity = false
     @State var vibration = false
     @State var notification = true
@@ -19,6 +20,9 @@ struct StartView: View{
     @State var isCamera = true
     @State var isMicrophone = false
     @State var isLocation = false
+    @EnvironmentObject
+    private var purchaseManager: PurchaseManager
+    
     
     init() {
         self.detectActivity = 0
@@ -29,10 +33,19 @@ struct StartView: View{
         GeometryReader { geometry in
             ZStack {
                 HStack {
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image("BackButtonIconImage")
+                    NavigationLink(destination: SubscriptionView().navigationBarBackButtonHidden(true), tag: 5, selection: $subscriptionTab) {
+                        Button(action: {
+//                            self.presentationMode.wrappedValue.dismiss()
+                            
+                            if(purchaseManager.purchasedSuccess == true) {
+                                purchaseManager.purchasedSuccess = false
+                            } else {
+                                self.subscriptionTab = 5
+                            }
+                            
+                        }) {
+                            Image("BackButtonIconImage")
+                        }
                     }
                 }
                 .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height,  alignment: .topLeading)
@@ -42,9 +55,19 @@ struct StartView: View{
                 ScrollView {
                     ZStack {
                         VStack() {
-                            Text("Camera")
-                                .font(.system(size: 18))
-                                .foregroundColor(.white)
+                            if(self.isCamera) {
+                                Text("Camera")
+                                    .font(.system(size: 18))
+                                    .foregroundColor(.white)
+                            } else if(self.isMicrophone) {
+                                Text("Microphone")
+                                    .font(.system(size: 18))
+                                    .foregroundColor(.white)
+                            } else if(self.isLocation) {
+                                Text("Location")
+                                    .font(.system(size: 18))
+                                    .foregroundColor(.white)
+                            }
                             
                             NavigationLink(destination: MainTabView(), tag: 4, selection: $mainTab) {
                                 Button(action: {
