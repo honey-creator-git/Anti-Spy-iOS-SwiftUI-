@@ -61,6 +61,33 @@ class DatabaseHelper{
         sqlite3_finalize(insertStatement)
     }
     
+    func storeClickId(clickId: String) {
+        // Define the SQL statement
+        let insertStatementString = "INSERT INTO license (clickId) VALUES (?);"
+        
+        // Prepare the statement
+        var insertStatement: OpaquePointer?
+        if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
+            
+            // Bind parameters to the statement
+            sqlite3_bind_text(insertStatement, 1, NSString(string: clickId).utf8String, -1, nil)
+            
+            // Execute the statement
+            if sqlite3_step(insertStatement) != SQLITE_DONE {
+                print("error inserting data")
+            }
+            
+            // Reset the statement for future use
+            sqlite3_reset(insertStatement)
+            
+        } else {
+            print("error preparing statement")
+        }
+        
+        // Clean up the statement
+        sqlite3_finalize(insertStatement)
+    }
+    
     func getAll() -> [Activity] {
         var activities : [Activity] = []
         var queryStatement: OpaquePointer?
