@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04C4A5862A02D12B00D5AE86 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4A5852A02D12B00D5AE86 /* DatabaseHelper.swift */; };
+		04C7CC1C2A0CBA07007F9824 /* WebRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7CC1B2A0CBA07007F9824 /* WebRequestHelper.swift */; };
 		E202D66C29ED897D00CCF082 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202D66B29ED897B00CCF082 /* Activity.swift */; };
 		E215998E29E6BECC000FA331 /* AntiSpyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E215998D29E6BECC000FA331 /* AntiSpyApp.swift */; };
 		E215999029E6BECC000FA331 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E215998F29E6BECC000FA331 /* ContentView.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		04C4A5852A02D12B00D5AE86 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		04C7CC1B2A0CBA07007F9824 /* WebRequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequestHelper.swift; sourceTree = "<group>"; };
 		E202D66B29ED897B00CCF082 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		E215998A29E6BECC000FA331 /* AntiSpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AntiSpy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E215998D29E6BECC000FA331 /* AntiSpyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyApp.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				E25C981B29F627FA006A9853 /* NotificationHelper.swift */,
 				E25C981E29F660E8006A9853 /* MicrophoneHelper.swift */,
 				04C4A5852A02D12B00D5AE86 /* DatabaseHelper.swift */,
+				04C7CC1B2A0CBA07007F9824 /* WebRequestHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				E202D66C29ED897D00CCF082 /* Activity.swift in Sources */,
 				E2B4E43F29EE390D004D83A0 /* SideMenu.swift in Sources */,
 				E238E77829E707FC00A2589F /* SubscriptionView.swift in Sources */,
+				04C7CC1C2A0CBA07007F9824 /* WebRequestHelper.swift in Sources */,
 				04C4A5862A02D12B00D5AE86 /* DatabaseHelper.swift in Sources */,
 				E25C981A29F627E2006A9853 /* VibrationHelper.swift in Sources */,
 				E2851D6F29F3913500C19636 /* LocationHelper.swift in Sources */,

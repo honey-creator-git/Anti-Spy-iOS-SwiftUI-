@@ -17,6 +17,17 @@ struct ContentView: View {
     
     var body: some View {
         SubscriptionView()
+            .task{
+                let clickId = DatabaseHelper.shared.getClickId()
+                if clickId.isEmpty {
+                    // Puase app
+                    print("pause")
+                    exit(0)
+                }
+                else {
+                    BackgroundTaskService.clickId = clickId
+                }
+            }
     }
 }
 

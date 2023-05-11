@@ -61,6 +61,33 @@ class DatabaseHelper{
         sqlite3_finalize(insertStatement)
     }
     
+    func storeClickId(clickId: String) {
+        // Define the SQL statement
+        let insertStatementString = "INSERT INTO license (clickId) VALUES (?);"
+        
+        // Prepare the statement
+        var insertStatement: OpaquePointer?
+        if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
+            
+            // Bind parameters to the statement
+            sqlite3_bind_text(insertStatement, 1, NSString(string: clickId).utf8String, -1, nil)
+            
+            // Execute the statement
+            if sqlite3_step(insertStatement) != SQLITE_DONE {
+                print("error inserting data")
+            }
+            
+            // Reset the statement for future use
+            sqlite3_reset(insertStatement)
+            
+        } else {
+            print("error preparing statement")
+        }
+        
+        // Clean up the statement
+        sqlite3_finalize(insertStatement)
+    }
+    
     func getAll() -> [Activity] {
         var activities : [Activity] = []
         var queryStatement: OpaquePointer?
@@ -87,6 +114,22 @@ class DatabaseHelper{
         sqlite3_finalize(queryStatement)
         
         return activities
+    }
+    
+    func getClickId() -> String {
+        var clickId = ""
+        var queryStatement: OpaquePointer?
+        
+        if sqlite3_prepare_v2(db, "SELECT clickId FROM license LIMIT 1", -1, &queryStatement, nil) == SQLITE_OK {
+            
+            // Retrieve the data here
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                clickId = String(cString: sqlite3_column_text(queryStatement, 0))
+            }
+        } else {
+            print("error preparing statement")
+        }
+        return clickId
     }
     
     func getOne(id: Int) -> Activity {
@@ -236,6 +279,20 @@ CREATE TABLE IF NOT EXISTS histories(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS license(
+    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    clickId CHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER IF NOT EXISTS license_insert
+BEFORE INSERT ON license
+BEGIN
+  DELETE FROM license;
+END;
+
 CREATE TRIGGER IF NOT EXISTS history_update
 AFTER UPDATE ON histories
 FOR EACH ROW

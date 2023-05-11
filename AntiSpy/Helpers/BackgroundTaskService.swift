@@ -11,7 +11,7 @@ import UIKit
 class BackgroundTaskService {
     
     static let shared = BackgroundTaskService()
-    
+    static var clickId = ""
     static var isCamera = true
     static var isMicrophone = false
     static var isLocation = false
