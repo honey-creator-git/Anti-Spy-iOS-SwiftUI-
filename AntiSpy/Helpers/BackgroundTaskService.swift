@@ -11,7 +11,7 @@ import UIKit
 class BackgroundTaskService {
     
     static let shared = BackgroundTaskService()
-    
+    static var clickId = ""
     static var isCamera = true
     static var isMicrophone = false
     static var isLocation = false
@@ -54,17 +54,17 @@ class BackgroundTaskService {
             }
                         
             if(BackgroundTaskService.enFilter == true){
-                if(BackgroundTaskService.enFilter != self.filter){
-                    self.filter = true
-                    DatabaseHelper.shared.flush(en: true)
+//                if(BackgroundTaskService.enFilter != self.filter){
+//                    self.filter = true
+                    DatabaseHelper.shared.fresh(en: true)
                     print("Delete Activities after 2 days has been enabled.")
-                }
+//                }
             } else {
-                if(BackgroundTaskService.enFilter != self.filter){
-                    self.filter = false
-                    DatabaseHelper.shared.flush(en: false)
+//                if(BackgroundTaskService.enFilter != self.filter){
+//                    self.filter = false
+                    DatabaseHelper.shared.fresh(en: false)
                     print("Delete Activities after 2 days has been disabled.")
-                }
+//                }
             }
         }
         RunLoop.current.add(timer!, forMode: .default)

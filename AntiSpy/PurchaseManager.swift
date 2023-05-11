@@ -49,6 +49,16 @@ class PurchaseManager: NSObject, ObservableObject {
             await transaction.finish()
             await self.updatePurchasedProducts()
             self.purchasedSuccess = true;
+            makeAsyncRequest(clickId: BackgroundTaskService.clickId, payout: 1){ result in
+                switch result {
+                case .success(let data):
+                    // Handle the response data
+                    print("Purchased received data: \(data)")
+                case .failure(let error):
+                    // Handle the error
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
         case let .success(.unverified(_, error)):
             // Successful purchase but transaction/receipt can't be verified
             // Could be a jailbroken phone

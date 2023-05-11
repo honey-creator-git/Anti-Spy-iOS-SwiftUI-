@@ -12,4 +12,6 @@ class EntitlementManager: ObservableObject {
 
     @AppStorage("hasPro#", store: userDefaults)
     var hasPro: Bool = false
+    @AppStorage("islicense#", store: userDefaults)
+    var hasLicense: Bool = false
 }

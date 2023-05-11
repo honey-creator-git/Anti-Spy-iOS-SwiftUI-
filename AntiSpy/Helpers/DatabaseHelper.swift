@@ -12,7 +12,7 @@ class DatabaseHelper{
     
     static let shared = DatabaseHelper()
     
-    let dbPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! + "/antispy.sqlite"
+    let dbPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! + "/antispy_logs.sqlite"
     
     var db: OpaquePointer?
     
@@ -34,7 +34,7 @@ class DatabaseHelper{
     func store(activity: Activity){
         
         // Define the SQL statement
-        let insertStatementString = "INSERT INTO histories (name, iconName, serviceName) VALUES (?, ?, ?);"
+        let insertStatementString = "INSERT INTO logs (name, iconName, serviceName) VALUES (?, ?, ?);"
         
         // Prepare the statement
         var insertStatement: OpaquePointer?
@@ -65,7 +65,7 @@ class DatabaseHelper{
         var activities : [Activity] = []
         var queryStatement: OpaquePointer?
         
-        if sqlite3_prepare_v2(db, "SELECT id, name, iconName, serviceName, strftime('%d-%m-%Y', created_at) as startDate, strftime('%H:%M:%S', created_at) as startTime, time(strftime('%s', updated_at) - strftime('%s', created_at), 'unixepoch') as duration FROM histories;", -1, &queryStatement, nil) == SQLITE_OK {
+        if sqlite3_prepare_v2(db, "SELECT id, name, iconName, serviceName, strftime('%d-%m-%Y', created_at) as startDate, strftime('%H:%M:%S', created_at) as startTime, time(strftime('%s', updated_at) - strftime('%s', created_at), 'unixepoch') as duration FROM logs;", -1, &queryStatement, nil) == SQLITE_OK {
             
             // Retrieve the data here
             while sqlite3_step(queryStatement) == SQLITE_ROW {
@@ -89,11 +89,12 @@ class DatabaseHelper{
         return activities
     }
     
+    
     func getOne(id: Int) -> Activity {
         var activity : Activity?
         var queryStatement: OpaquePointer?
         
-        if sqlite3_prepare_v2(db, "SELECT id, name, iconName, serviceName, strftime('%d-%m-%Y', created_at) as startDate, strftime('%H:%M:%S', created_at) as startTime, time(strftime('%s', updated_at) - strftime('%s', created_at), 'unixepoch') as duration FROM histories WHERE id = ?", -1, &queryStatement, nil) == SQLITE_OK {
+        if sqlite3_prepare_v2(db, "SELECT id, name, iconName, serviceName, strftime('%d-%m-%Y', created_at) as startDate, strftime('%H:%M:%S', created_at) as startTime, time(strftime('%s', updated_at) - strftime('%s', created_at), 'unixepoch') as duration FROM logs WHERE id = ?", -1, &queryStatement, nil) == SQLITE_OK {
             sqlite3_bind_int(queryStatement, 1, Int32(id))
             // Retrieve the data here
             while sqlite3_step(queryStatement) == SQLITE_ROW {
@@ -113,7 +114,7 @@ class DatabaseHelper{
     }
     
     func doWork(activity: Activity){
-        let queryStatementString = "SELECT * FROM histories WHERE name = ? AND serviceName = ? AND updated_at > datetime('now', '-12 seconds') LIMIT 1 OFFSET 0;";
+        let queryStatementString = "SELECT * FROM logs WHERE name = ? AND serviceName = ? AND updated_at > datetime('now', '-12 seconds') LIMIT 1 OFFSET 0;";
         var queryStatement: OpaquePointer?
         	
         if(sqlite3_prepare(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK) {
@@ -149,48 +150,33 @@ class DatabaseHelper{
         sqlite3_finalize(queryStatement)
     }
     
-    func flush( en: Bool) {
+    func fresh( en: Bool) {
         var triggerStatementString = "";
         if en == true {
-            triggerStatementString = """
-CREATE TRIGGER IF NOT EXISTS history_flush
-BEFORE INSERT ON histories
-BEGIN
-   DELETE FROM histories WHERE updated_at < date('now', '-2 day');
-END;
-"""
-        }
-        else{
-            triggerStatementString = """
-DROP TRIGGER IF EXISTS history_flush;
-"""
-        }
-        
-        var triggerStatement: OpaquePointer?
-        if sqlite3_prepare_v2(db, triggerStatementString, -1, &triggerStatement, nil) ==
-            SQLITE_OK {
-            if sqlite3_step(triggerStatement) == SQLITE_DONE {
-                print("trigger table created.")
+            triggerStatementString = "DELETE FROM logs WHERE updated_at < date('now', '-2 day');"
+            var triggerStatement: OpaquePointer?
+            if sqlite3_prepare_v2(db, triggerStatementString, -1, &triggerStatement, nil) ==
+                SQLITE_OK {
+                if sqlite3_step(triggerStatement) == SQLITE_DONE {
+                    print("trigger table created.")
+                } else {
+                    print("trigger could not be created.")
+                }
             } else {
-                print("trigger could not be created.")
+                print("trigger could not be prepared.")
             }
-        } else {
-            print("trigger could not be prepared.")
+            sqlite3_finalize(triggerStatement)
         }
-        sqlite3_finalize(triggerStatement)
-        
 }
         
     
     
     func update( id: Int, activity: Activity ) {
-        let updateStatementString = "UPDATE histories SET updated_at = datetime('now') WHERE id = ?;"
+        let updateStatementString = "UPDATE logs SET updated_at = datetime('now') WHERE id = ?;"
         var updateStatement: OpaquePointer?
         
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
             // Bind any parameters if needed
-//            sqlite3_bind_text(updateStatement, 1, NSString(string: activity.name).utf8String, -1, nil)
-//            sqlite3_bind_text(updateStatement, 2, NSString(string: activity.serviceName).utf8String, -1, nil)
             sqlite3_bind_int(updateStatement, 1, Int32(id))
             if sqlite3_step(updateStatement) != SQLITE_DONE {
                 let errmsg = String(cString: sqlite3_errmsg(db))
@@ -206,7 +192,7 @@ DROP TRIGGER IF EXISTS history_flush;
     }
     
     func deleteOne(id: Int) {
-        let deleteStatementString = "DELETE FROM histories WHERE id = ?;"
+        let deleteStatementString = "DELETE FROM logs WHERE id = ?;"
         var deleteStatement: OpaquePointer?
         
         if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
@@ -224,23 +210,24 @@ DROP TRIGGER IF EXISTS history_flush;
         }
         sqlite3_finalize(deleteStatement)
     }
-    
-    
+
+
     func initDatabase() {
         let createTableString = """
-CREATE TABLE IF NOT EXISTS histories(
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+CREATE TABLE IF NOT EXISTS logs(
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     name CHAR(255),
     iconName CHAR(255),
     serviceName CHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER IF NOT EXISTS history_update
-AFTER UPDATE ON histories
+
+CREATE TRIGGER IF NOT EXISTS logs_trigger
+AFTER UPDATE ON logs
 FOR EACH ROW
 BEGIN
-  UPDATE histories SET updated_at = CURRENT_TIMESTAMP WHERE id = NEW.id;
+  UPDATE logs SET updated_at = CURRENT_TIMESTAMP WHERE id = NEW.id;
 END;
 
 """
