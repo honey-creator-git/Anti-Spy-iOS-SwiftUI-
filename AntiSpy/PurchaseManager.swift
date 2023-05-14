@@ -5,7 +5,7 @@ import StoreKit
 class PurchaseManager: NSObject, ObservableObject {
 
     private let entitlementManager: EntitlementManager
-    private let productIds = ["com.antispy.month", "com.antispy.year"]
+    private let productIds = ["com.antispyapp.month", "com.antispyapp.premium"]
 //    private let productIds = ["com.antispy.year"]
     private var updates: Task<Void, Never>? = nil
     
@@ -80,9 +80,9 @@ class PurchaseManager: NSObject, ObservableObject {
     }
     
     var purchasedProductIDName: String {
-        if(self.purchasedProductIDs.first == "com.antispy.month") {
+        if(self.purchasedProductIDs.first == "com.antispyapp.month") {
             return "basic_plan"
-        } else if(self.purchasedProductIDs.first == "com.antispy.year") {
+        } else if(self.purchasedProductIDs.first == "com.antispyapp.premium") {
             return "year_plan"
         }
         return ""

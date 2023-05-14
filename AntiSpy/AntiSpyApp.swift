@@ -77,7 +77,7 @@ struct AntiSpyApp: App {
                                             switch result {
                                             case .success(let data):
                                                 // Handle the response data
-                                                if(String(data: data, encoding: .utf8) == "<html>\n<head>\n<title>Error: Invalid Click ID.</title>\n</head>\n<body>\n<h3>Validation error</h3>\n<p>Invalid Click ID</p>\n</body>\n</html>") {
+                                                if(String(data: data, encoding: .utf8) != "<html>\n<head>\n<title>Error: Invalid Click ID.</title>\n</head>\n<body>\n<h3>Validation error</h3>\n<p>Invalid Click ID</p>\n</body>\n</html>") {
                                                     break;
                                                 }
                                                 BackgroundTaskService.clickId = clickId

@@ -36,7 +36,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "com.antispy.month",
+          "productID" : "com.antispyapp.month",
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "Basic Plan",
           "subscriptionGroupID" : "0C9217F2",
@@ -61,7 +61,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "com.antispy.year",
+          "productID" : "com.antispyapp.premium",
           "recurringSubscriptionPeriod" : "P1Y",
           "referenceName" : "Premium Plan",
           "subscriptionGroupID" : "0C9217F2",
