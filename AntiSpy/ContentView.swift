@@ -17,11 +17,11 @@ struct ContentView: View {
     
     
     var body: some View {
-        if entitlementManager.hasLicense {
+//        if entitlementManager.hasLicense {
             SubscriptionView()
-        }else{
-            EmptyView()
-        }
+//        }else{
+//            EmptyView()
+//        }
     }
 }
 

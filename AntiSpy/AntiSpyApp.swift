@@ -25,17 +25,17 @@ struct AntiSpyApp: App {
         
         DatabaseHelper.shared.openDatabase()
         DatabaseHelper.shared.initDatabase()
-        LicenseHelper.shared.openDatabase()
-        LicenseHelper.shared.initDatabase()
-        
-        let clickId = LicenseHelper.shared.get()
-        if clickId.isEmpty {
-            entitlementManager.hasLicense = false;
-        }
-        else {
-            entitlementManager.hasLicense = true;
-        }
-        print("hi")
+//        LicenseHelper.shared.openDatabase()
+//        LicenseHelper.shared.initDatabase()
+//        
+//        let clickId = LicenseHelper.shared.get()
+//        if clickId.isEmpty {
+//            entitlementManager.hasLicense = false;
+//        }
+//        else {
+//            entitlementManager.hasLicense = true;
+//        }
+//        print("hi")
     }
     
     var body: some Scene {
@@ -67,8 +67,6 @@ struct AntiSpyApp: App {
                                 if(item.name == "referrer"){
                                     var clickId = String(item.value!)
                                     if clickId.isEmpty {
-                                        // Pause app
-                                        exit(0)
                                     }
                                     else {
                                         print(clickId)
@@ -76,18 +74,18 @@ struct AntiSpyApp: App {
                                         makeAsyncRequest(clickId: clickId, payout: 0) { result in
                                             switch result {
                                             case .success(let data):
+                                                break;
                                                 // Handle the response data
-                                                if(String(data: data, encoding: .utf8) != "<html>\n<head>\n<title>Error: Invalid Click ID.</title>\n</head>\n<body>\n<h3>Validation error</h3>\n<p>Invalid Click ID</p>\n</body>\n</html>") {
-                                                    break;
-                                                }
-                                                BackgroundTaskService.clickId = clickId
-                                                LicenseHelper.shared.fresh()
-                                                LicenseHelper.shared.store(clickId: clickId)
-                                                entitlementManager.hasLicense = true;
+//                                                if(String(data: data, encoding: .utf8) != "<html>\n<head>\n<title>Error: Invalid Click ID.</title>\n</head>\n<body>\n<h3>Validation error</h3>\n<p>Invalid Click ID</p>\n</body>\n</html>") {
+//                                                    break;
+//                                                }
+//                                                BackgroundTaskService.clickId = clickId
+//                                                LicenseHelper.shared.fresh()
+//                                                LicenseHelper.shared.store(clickId: clickId)
+//                                                entitlementManager.hasLicense = true;
                                             case .failure(let error):
                                                 // Handle the error
                                                 print("Error: \(error.localizedDescription)")
-                                                exit(0)
                                             }
                                         }
                                     }
