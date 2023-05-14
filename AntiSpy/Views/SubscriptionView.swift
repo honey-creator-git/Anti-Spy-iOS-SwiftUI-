@@ -108,7 +108,7 @@ struct SubscriptionView: View {
                                         Button{
                                             Task{
                                                 do {
-                                                    try await AppStore.sync()
+                                                    purchaseManager.restoreSubscription();
                                                 } catch {
                                                     print(error)
                                                 }

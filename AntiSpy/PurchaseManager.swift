@@ -93,9 +93,14 @@ class PurchaseManager: NSObject, ObservableObject {
     }
 
     func cancelSubscription() {
-        SKPaymentQueue.default().restoreCompletedTransactions()
+        if let transaction = SKPaymentQueue.default().transactions.first {
+            SKPaymentQueue.default().finishTransaction(transaction)
+        }
     }
     
+    func restoreSubscription(){
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
     
     func updatePurchasedProducts() async {
         for await result in Transaction.currentEntitlements {
